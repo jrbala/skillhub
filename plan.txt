@@ -1,0 +1,7 @@
+H1 — SkillHub : apprenez et partagez vos compétences
+  H2 — Nos valeurs
+  H2 — Nos ateliers
+    H3 — Découvrir le HTML
+    H3 — Premiers pas en JavaScript
+  H2 — Nos formateurs
+  H2 — Inscription
