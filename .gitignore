@@ -1,0 +1,11 @@
+# Ignora um arquivo específico
+# segredo.txt
+
+# Ignora uma pasta inteira
+node_modules/
+
+# Ignora todos os arquivos .log
+*.log
+
+# Ignora o arquivo .env na raiz do projeto
+/.env
