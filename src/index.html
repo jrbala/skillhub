@@ -10,17 +10,25 @@
   </head>
 
   <body>
-    <a href="#contenu">Aller au contenu principal</a>
-    <a href="#inscription">Creer mon compte</a>
+    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
 
-    <header>
-      <p>SkillHub</p>
-    </header>  
+    <header class="site-header">
+    <p class="brand"> SkillHub</p>
+
+    <nav aria-label="Navigation principale">
+        <a href="#valeurs">Valeurs</a>
+        <a href="#ateliers">Ateliers</a>
+        <a href="#formateurs">Formateurs</a>
+    </nav>
+
+    <a class="header-cta bouton" href="#inscription">Créer mon compte</a>
+    </header>
 
     <main id="contenu">
       <section id="accroche">
         <h1>SkillHub : apprenez et partagez vos compétences</h1>
         <p>Découvrez des ateliers pour apprendre ensemble.</p>
+        <a href="#inscription">Découvrir l'inscription</a>
         <img
             src="assets/images/accroche-960.webp"
             srcset="
@@ -30,9 +38,7 @@
             sizes="(max-width: 960px) 100vw, 960px"
             width="960"
             height="640"
-            alt="Un homme tenant un post-it portant le mot « Code »"
-            >
-        <a href="#inscription">Découvrir l'inscription</a>
+            alt="Un homme tenant un post-it portant le mot « Code »">
       </section>
 
         <section id="valeurs">
@@ -40,7 +46,7 @@
         <p>Nous encourageons le partage et l'apprentissage par la pratique.</p>
 
         <ul>
-            <li>
+            <li class="valeur">
                 <svg xmlns="http://www.w3.org/2000/svg"   width="24"   height="24"  fill="none"  viewBox="0 0 24 24" stroke-width="1.5"  stroke="currentColor"
                 aria-hidden="true" focusable="false">
                     <path  stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
@@ -49,7 +55,7 @@
                 <p>Les participants partagent leurs connaissances et leurs expériences.</p>
             </li>
 
-            <li>
+            <li class="valeur">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                 </svg>
@@ -57,7 +63,7 @@
                 <p>Les participants s'entraident pour résoudre les difficultés.</p>
             </li>
 
-            <li>
+            <li class="valeur">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24"  height="24" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
                 </svg>
@@ -65,7 +71,7 @@
                 <p>Chaque atelier propose des exercices et des projets concrets.</p>
             </li>
 
-            <li>
+            <li class="valeur">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -74,7 +80,7 @@
                 <p>Les contenus et les ateliers sont conçus pour être accessibles à tous.</p>
             </li>
 
-            <li>
+            <li class="valeur">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
                 </svg>
@@ -82,7 +88,7 @@
                 <p>Les ateliers encouragent les participants à développer leurs idées.</p>
             </li>
 
-            <li>
+            <li class="valeur">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
                 </svg>
@@ -95,22 +101,23 @@
 
         <section id="ateliers">
         <h2>Nos ateliers</h2>
+            <div class="liste-ateliers">
+                <article class="carte">
+                    <h3 class="titre">Découvrir le HTML</h3>
+                    <p>Apprenez à organiser le contenu d'une page web.</p>
+                </article>
 
-        <article>
-            <h3>Découvrir le HTML</h3>
-            <p>Apprenez à organiser le contenu d'une page web.</p>
-        </article>
-
-        <article>
-            <h3>Premiers pas en JavaScript</h3>
-            <p>Découvrez comment ajouter des interactions à une page.</p>
-        </article>
+                <article class="carte">
+                    <h3 class="titre">Premiers pas en JavaScript</h3>
+                    <p>Découvrez comment ajouter des interactions à une page.</p>
+                </article>
+            </div>
         </section>
 
         <section id="formateurs">
         <h2>Nos formateurs</h2>
         <p>Nos formateurs accompagnent les participants pendant les ateliers.</p>
-        <article>
+        <article class="carte">
             <img
                 src="assets/images/formateur-1-640.webp"
                 srcset="
@@ -123,11 +130,11 @@
                 height="427"
                 loading="lazy"
                 alt="Portrait de Fernanda Maria">
-            <h3>Fernanda Maria</h3>
-            <p>Formateur en HTML et CSS.</p>
+            <h3 class="titre">Fernanda Maria</h3>
+            <p>Formatrice en HTML et CSS.</p>
         </article>
 
-        <article>
+        <article class="carte">
             <img
                 src="assets/images/formateur-2-640.webp"
                 srcset="
@@ -140,11 +147,11 @@
                 height="360"
                 loading="lazy"
                 alt="Portrait de Joseph Ricardo">
-            <h3>Joseph Ricardo</h3>
+            <h3 class="titre">Joseph Ricardo</h3>
             <p>Formation en JavaScript.</p>
             </article>
 
-            <article>
+            <article class="carte">
             <img
                 src="assets/images/formateur-3-640.webp"
                 srcset="
@@ -157,7 +164,7 @@
                 height="360"
                 loading="lazy"
                 alt="Portrait de Dominique Laurent">
-            <h3>Dominique Laurent</h3>
+            <h3 class="titre">Dominique Laurent</h3>
             <p>Formation en accessibilité web.</p>
             </article>
         </section>
@@ -169,15 +176,15 @@
         <form aria-label="Formulaire d'inscription à SkillHub">
             <div>
             <label for="nom">Nom</label>
-            <input id="nom" name="nom" type="text" required>
+            <input class="champ" id="nom" name="nom" type="text" required>
             </div>
 
             <div>
             <label for="email">Adresse e-mail</label>
-            <input id="email" name="email" type="email" required>
+            <input class="champ" id="email" name="email" type="email" required>
             </div>
 
-            <button type="submit">S'inscrire</button>
+            <button class="bouton" type="submit">S'inscrire</button>
         </form>
         </section>
     </main>
