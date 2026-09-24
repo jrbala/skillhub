@@ -22,11 +22,11 @@
 :root {
     --couleur-fond: #f6f7fb;
     --couleur-texte: #25283a;
-    --coeleur-accent: #5b4cf0;
-    --coeleur-accent-sombre: #4738d1;
-    --coeleur-surface: #ffffff;
-    --coeleur-erreur: #b42318;
-    --coeleur-bordure: #dfe3eb;
+    --couleur-accent: #5b4cf0;
+    --couleur-accent-sombre: #4738d1;
+    --couleur-surface: #ffffff;
+    --couleur-erreur: #b42318;
+    --couleur-bordure: #dfe3eb;
 }
 body {
     margin: 0;
@@ -35,14 +35,16 @@ body {
     font-family: "Inter", sans-serif;
     font-weight: 400;
     line-height: 1.6;
+    overflow-wrap: break-word;
 }
 header {
     padding: 1rem 1.5rem;
-    background-color: var(--coeleur-surface);
-    border: 1px solid var(--coeleur-bordure);
+    background-color: var(--couleur-surface);
+    border: 1px solid var(--couleur-bordure);
     display: flex;
     gap: 1.5rem;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 .brand {
     margin: 0;
@@ -65,51 +67,99 @@ h2,
 h3 {
   font-weight: 700;
 }
+h1 {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+}
 .champ {
   font: inherit;
   width: 100%;
   padding: 0.75rem 1.5rem;
+  border: 1px solid var(--couleur-bordure);
+  background-color: var(--couleur-surface);
+  color: var(--couleur-texte);
 }
-
+.champ:focus-visible {
+  outline: 2px solid var(--couleur-accent);
+  outline-offset: -1px;
+}
 a:hover,
 a:focus-visible {
-    color: var(--coeleur-accent);
+    color: var(--couleur-accent);
 }
-.carte > .titre {
-    background-color: var(--coeleur-surface);
-    padding: 1.5rem;
-    border: 1px solid var(--coeleur-bordure);
-    margin: 1rem 0;
+.carte {
+  background-color: var(--couleur-surface);
+  padding: 1.5rem;
+  border: 1px solid var(--couleur-bordure);
+}
+.carte,
+.valeur {
+  transition: background-color 200ms ease;
+}
+
+.carte:hover,
+.valeur:hover {
+  background-color: rgb(255 255 255 / 5%);
 }
 input:user-invalid{
-    border-color: var(--coeleur-erreur);
+    border-color: var(--couleur-erreur);
+}
+#inscription > h2,
+#inscription > p {
+  text-align: center;
+  margin-inline: auto;
+}
+form {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1.5rem;
+  background-color: rgba(221, 224, 235, 0.231);
+  border-left: 4px solid var(--couleur-accent);
+}
+form .bouton {
+  display: block;
+  margin-inline: auto;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 form > div {
     margin-bottom: 1rem;
 }
 .bouton {
-    background-color: var(--coeleur-accent);
-    color: var(--coeleur-surface);
+    background-color: var(--couleur-accent);
+    color: var(--couleur-surface);
     font: inherit;
     padding: 0.75rem 1.5rem;
-    border: 1px solid var(--coeleur-accent);
+    border: 1px solid var(--couleur-accent);
     display: inline-block;
+    text-decoration: none;
+}
+.header-cta {
+  padding: 0.5rem 1rem;
 }
 .bouton:hover,
 .bouton:focus-visible {
-    background-color: var(--coeleur-accent-sombre);
-    border-color: var(--coeleur-accent-sombre);
+    color: var(--couleur-surface);
+    background-color: var(--couleur-accent-sombre);
 }
 nav {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid var(--couleur-bordure);
+    padding-bottom: 1rem;
 }
 nav a {
     color: var(--couleur-texte);
     text-decoration: none;
 }
 .header-cta {
-    margin-left: auto;
+    margin-left: 0;
+    align-self: center;
 }
 #valeurs ul {
     list-style: none;
@@ -119,12 +169,12 @@ nav a {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
 }
 .valeur {
-    background-color: var(--coeleur-surface);
+    background-color: var(--couleur-surface);
     padding: 1.5rem;
-    border: 1px solid var(--coeleur-bordure);
+    border: 1px solid var(--couleur-bordure);
 }
 .valeur svg {
-    color: var(--coeleur-accent);
+    color: var(--couleur-accent);
 }
 .liste-ateliers{
     display: grid;
@@ -135,4 +185,161 @@ nav a {
     margin: 0;
     display: flex;
     flex-direction: column;
+    gap: 0.75rem;
+}
+.liste-ateliers > .carte > * {
+  margin: 0;
+}
+.liste-ateliers .action {
+  align-self: flex-start;
+}
+.liste-ateliers > .carte > .action {
+    margin-top: auto;
+}
+.liste-formateurs .carte > * {
+  margin: 0;
+}
+.liste-formateurs .carte {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.liste-formateurs .carte img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.skip-link {
+    position: absolute;
+    top: -3rem;
+    left: 0;
+    z-index: 10;
+    background-color: var(--couleur-surface);
+    padding: 0.5rem 1rem;
+}
+.skip-link:focus {
+    top: 0;
+}
+main p {
+    max-width: 65ch;
+}
+.page {
+  display: grid;
+
+  grid-template-areas:
+    "entete"
+    "contenu"
+    "pied";
+
+  grid-template-columns: minmax(0, 1fr);
+}
+.liste-formateurs {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+#accroche {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+#accroche > img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.accroche-layout > aside {
+  grid-area: lateral;
+  width: calc(100% - 3rem);  max-width: 1100px;
+  margin-inline: auto;
+  padding: 1.5rem;
+  background-color: rgb(91 76 240 / 6%);
+  border: 1px solid var(--couleur-bordure);
+  border-left: 4px solid var(--couleur-accent);
+  margin-top: 3rem;
+}
+.page > header {
+  grid-area: entete;
+}
+.page > main {
+  grid-area: contenu;
+}
+.page > footer {
+  grid-area: pied;
+}
+.accroche-layout {
+  display: grid;
+
+  grid-template-areas:
+    "accroche"
+    "image"
+    "lateral";
+
+  grid-template-columns: minmax(0, 1fr);
+}
+.accroche-image {
+  grid-area: image;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+.accroche-layout > #accroche {
+  grid-area: accroche;
+}
+.accroche-image {
+  grid-area: image;
+}
+.accroche-image {
+  grid-area: image;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+footer {
+  padding: 1rem 1.5rem;
+  background-color: var(--couleur-surface);
+  border-top: 1px solid var(--couleur-bordure);
+  text-align: center;
+}
+footer p {
+  margin: 0;
+}
+@media (min-width:45em){
+    header {
+        flex-direction: row;
+        align-items: center;
+    }
+    .header-cta {
+        margin-left: auto;
+    }
+  nav {
+    gap: 1.5rem;
+    width: auto;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  nav a {
+    flex: none;
+    text-align: left;
+  }
+}
+@media (min-width: 64em) {
+.accroche-layout {
+  width: calc(100% - 1.5rem);
+  max-width: none;
+  margin-inline: auto;
+  column-gap: 1rem;
+  row-gap: 1rem;
+
+  grid-template-areas:
+    "accroche lateral"
+    "image image";
+
+  grid-template-columns: minmax(0, 1fr) 18rem;
+}
+  .accroche-layout > aside {
+    width: 100%;
+    align-self: start;
+    margin-top: 4rem;
+  }
 }
