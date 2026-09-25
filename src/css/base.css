@@ -324,21 +324,22 @@ footer p {
   }
 }
 @media (min-width: 64em) {
-.accroche-layout {
-  width: calc(100% - 1.5rem);
-  max-width: none;
-  margin-inline: auto;
-  column-gap: 1rem;
-  row-gap: 1rem;
-
-  grid-template-areas:
-    "accroche lateral"
-    "image image";
-
-  grid-template-columns: minmax(0, 1fr) 18rem;
-}
-  .accroche-layout > aside {
+  .accroche-layout {
     width: 100%;
+    max-width: none;
+    margin-inline: auto;
+    column-gap: 1rem;
+    row-gap: 1rem;
+
+    grid-template-areas:
+      "accroche lateral"
+      "image image";
+
+    grid-template-columns: minmax(0, 1fr) 18rem;
+  }
+  .accroche-layout > aside {
+    width: calc(100% - 1.5rem);
+    margin-inline: 0 1.5rem;
     align-self: start;
     margin-top: 4rem;
   }
