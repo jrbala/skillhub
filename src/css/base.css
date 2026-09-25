@@ -50,6 +50,9 @@ header {
     margin: 0;
     font-weight: 700;
     color: var(--couleur-texte);
+    padding-bottom: 0.25rem;
+    border-bottom: 3px solid transparent;
+    align-self: center;
 }
 img {
     display: block;
@@ -154,8 +157,17 @@ nav {
     padding-bottom: 1rem;
 }
 nav a {
+    display: inline-block;
     color: var(--couleur-texte);
     text-decoration: none;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 0.25rem;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--couleur-accent);
+    border-bottom: 3px solid var(--couleur-accent);
 }
 .header-cta {
     margin-left: 0;
@@ -242,6 +254,9 @@ main p {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+#accroche p {
+    max-width: none;
+}
 #accroche > img {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -322,6 +337,9 @@ footer p {
     flex: none;
     text-align: left;
   }
+  .brand {
+    align-self: auto;
+}
 }
 @media (min-width: 64em) {
   .accroche-layout {
