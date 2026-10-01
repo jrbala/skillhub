@@ -8,15 +8,23 @@
     <link rel="preload" href="assets/fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin >
     <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/base.css">
-  </head>
+    <script src="js/main.js" defer></script>  </head>
 
   <body>
     <a class="skip-link" href="#contenu">Aller au contenu principal</a>
     <div class="page">
         <header class="site-header">
         <p class="brand"> SkillHub</p>
-
-        <nav aria-label="Navigation principale">
+            <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navigation-principale"
+            >
+                <span aria-hidden="true">☰</span>
+                <span class="texte-visuellement-cache">Menu principal</span>
+            </button>
+        <nav id="navigation-principale" aria-label="Navigation principale">
             <a href="#valeurs">Valeurs</a>
             <a href="#ateliers">Ateliers</a>
             <a href="#formateurs">Formateurs</a>
@@ -49,7 +57,9 @@
                 <aside>
                     <h2>Prochain atelier</h2>
                     <p>Le prochain atelier est consacré aux bases du HTML.</p>
-                    <a class="bouton" href="#inscription">Réserver ma place</a>
+                    <button class="bouton ouvrir-modale" type="button">
+                        Réserver ma place
+                    </button>
                 </aside>
             </div>
 
@@ -191,18 +201,21 @@
             <h2>Inscription</h2>
             <p>Laissez vos coordonnées pour vous inscrire.</p>
 
-            <form aria-label="Formulaire d'inscription à SkillHub">
+            <form id="formulaire-inscription" aria-label="Formulaire d'inscription à SkillHub" novalidate>
                 <div>
                 <label for="nom">Nom</label>
-                <input class="champ" id="nom" name="nom" type="text" required>
+                <input class="champ" id="nom" name="nom" type="text" required aria-describedby="erreur-nom">
+                <p id="erreur-nom" class="message-erreur" aria-live="polite"></p>
                 </div>
 
                 <div>
                 <label for="email">Adresse e-mail</label>
-                <input class="champ" id="email" name="email" type="email" required>
+                <input class="champ" id="email" name="email" type="email" required aria-describedby="erreur-email">
+                <p id="erreur-email" class="message-erreur" aria-live="polite"></p>
                 </div>
 
                 <button class="bouton" type="submit">S'inscrire</button>
+                <p id="message-formulaire" aria-live="polite"></p>
             </form>
             </section>
         </main>
@@ -211,5 +224,16 @@
         <p>SkillHub</p>
         </footer>
     </div>
+    <dialog id="modale-atelier" aria-labelledby="titre-modale">
+  <h2 id="titre-modale">Réserver votre place</h2>
+
+  <p>
+    Confirmez votre intérêt pour le prochain atelier consacré aux bases du HTML.
+  </p>
+
+  <button class="bouton fermer-modale" type="button">
+    Fermer
+  </button>
+</dialog>
   </body>
 </html>
