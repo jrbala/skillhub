@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mon espace — démonstration pédagogique SkillHub."><title>Mon espace — SkillHub</title>
+<link rel="stylesheet" href="css/base.css"><script src="js/stockage.js" defer></script><script src="js/main.js" defer></script><script src="js/compte.js" defer></script></head>
+<body data-page="profil"><a class="skip-link" href="#contenu">Aller au contenu principal</a><div class="page">
+        <header class="site-header">
+        <p class="brand"> SkillHub</p>
+            <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navigation-principale"
+            >
+                <span aria-hidden="true">☰</span>
+                <span class="texte-visuellement-cache">Menu principal</span>
+            </button>
+        <nav id="navigation-principale" aria-label="Navigation principale">
+            <a href="index.html#valeurs">Valeurs</a>
+            <a href="index.html#ateliers">Ateliers</a>
+            <a href="index.html#formateurs">Formateurs</a>
+        </nav>
+
+        <div class="header-cta compte-navigation" data-navigation-compte>
+          <a class="bouton bouton-secondaire" href="connexion.html">Se connecter</a>
+          <a class="bouton" href="inscription.html">Créer mon compte</a>
+        </div>
+        </header>
+
+<main id="contenu">
+  <section class="espace-profil">
+    <p class="surtitre">VOTRE PARCOURS SKILLHUB</p>
+    <h1>Mon espace</h1>
+    <p class="profil-introduction">Retrouvez vos ateliers et préparez votre prochaine étape.</p>
+    <div id="profil" hidden>
+      <div class="profil-identite carte">
+        <span class="profil-avatar" id="profil-initiale" aria-hidden="true"></span>
+        <div><h2 id="profil-nom"></h2><p id="profil-email"></p></div>
+        <p class="profil-compteur"><strong id="nombre-ateliers">0</strong><span>Inscriptions</span></p>
+      </div>
+      <p id="message-profil" class="message-statut confirmation-inscription" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+      <div id="confirmation-atelier" class="carte" hidden>
+        <h2>Confirmer mon inscription</h2><p id="detail-attente"></p>
+        <div class="profil-actions"><button class="bouton" id="confirmer-atelier" type="button">Confirmer mon inscription</button><button class="bouton bouton-secondaire" id="annuler-atelier" type="button">Annuler</button></div>
+      </div>
+      <div class="profil-section-entete"><h2>Mes ateliers</h2><a class="bouton bouton-secondaire" href="index.html#ateliers">Explorer les ateliers</a></div>
+      <div id="aucune-inscription" class="profil-vide carte">
+        <span class="atelier-code" aria-hidden="true">&lt;/&gt;</span>
+        <h3>Votre prochain atelier vous attend</h3>
+        <p>Vous n’êtes encore inscrit à aucun atelier. Choisissez un sujet et commencez à apprendre avec nous.</p>
+        <a class="bouton" href="index.html#ateliers">Découvrir les ateliers</a>
+      </div>
+      <div id="mes-ateliers" class="liste-ateliers"></div>
+      <div class="profil-actions profil-bas"><a href="index.html">← Retour à l’accueil</a><button class="bouton bouton-secondaire" type="button" data-deconnexion>Se déconnecter</button></div>
+    </div>
+    <noscript>Activez JavaScript pour utiliser cette démonstration de compte.</noscript>
+  </section>
+</main>
+<dialog id="dialog-desinscription" class="dialog-reservation" aria-labelledby="titre-desinscription" aria-describedby="detail-desinscription">
+  <h2 id="titre-desinscription">Annuler cette inscription ?</h2>
+  <p id="detail-desinscription"></p>
+  <p>Vous pourrez vous inscrire à nouveau depuis la liste des ateliers.</p>
+  <div class="profil-actions"><button class="bouton bouton-secondaire" id="garder-inscription" type="button" autofocus>Garder mon inscription</button><button class="bouton bouton-danger" id="confirmer-desinscription" type="button">Annuler l’inscription</button></div>
+  <p id="erreur-desinscription" class="message-statut est-erreur" role="status" aria-live="polite"></p>
+</dialog>
+<footer><p>© 2026 SkillHub. Tous droits réservés.</p></footer></div></body></html>

@@ -2,7 +2,7 @@
 
 ## Présentation du projet
 
-SkillHub est une landing page permettant de présenter des ateliers, les valeurs de la plateforme, les formateurs et un formulaire d’inscription. Le projet a été développé progressivement à travers les différents travaux pratiques du module FM01.
+SkillHub était initialement une landing page permettant de présenter des ateliers, les valeurs de la plateforme, les formateurs et un formulaire d’inscription. Le projet a été développé progressivement à travers les différents travaux pratiques du module FM01.
 
 ## TP1 — Structure HTML sémantique
 
@@ -75,3 +75,11 @@ Une erreur de saisie dans la fonction CSS `minmax()` empêchait la grille des va
 ## Conclusion
 
 Le projet SkillHub m’a permis de mettre en pratique la structuration sémantique d’une page, l’intégration de médias optimisés, la création d’une mise en page responsive et la mesure des performances. Les tests réalisés montrent une page stable, légère et utilisable sur différentes tailles d’écran.
+
+## Évolution — Application statique avec comptes simulés
+
+Trois pages HTML sémantiques complètent l’accueil : création de compte, connexion et espace utilisateur. Les cartes d’atelier présentent désormais niveau, durée, horaires, modalité et prix. Les nouvelles pages réutilisent les cartes, boutons, variables CSS et seuils responsive existants (45em et 64em). Aucune bibliothèque ni compilation n’a été ajoutée.
+
+Le stockage JSON et les opérations de compte sont centralisés dans `stockage.js` ; `compte.js` relie les formulaires, la navigation et le profil à ces fonctions. La Web Crypto API calcule le SHA-256 avant l’enregistrement du mot de passe. Les comptes, session, inscriptions et atelier en attente utilisent quatre clés localStorage distinctes. Cette organisation reste une simulation pédagogique sans sécurité serveur.
+
+Les chemins restent relatifs et le workflow GitHub Pages continue à publier `src`. Les preuves de performance et de validation précédentes sont conservées comme résultats historiques, sans attribuer leurs scores aux nouvelles pages. Voir [la vérification des comptes](verification-comptes.md) pour les contrôles de cette évolution.

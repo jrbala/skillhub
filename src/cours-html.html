@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Découvrez notre atelier complet sur le HTML.">
+    <title>Découvrir le HTML — SkillHub</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/stockage.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/compte.js" defer></script>
+  </head>
+  <body data-page="fiche">
+    <div class="page">
+      <header class="site-header">
+        <a href="index.html" class="brand" style="text-decoration: none;">SkillHub</a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navigation-principale"
+        >
+          <span aria-hidden="true">☰</span>
+          <span class="texte-visuellement-cache">Menu principal</span>
+        </button>
+        <nav id="navigation-principale" aria-label="Navigation principale">
+          <a href="index.html#valeurs">Valeurs</a>
+          <a href="index.html#ateliers">Ateliers</a>
+          <a href="index.html#formateurs">Formateurs</a>
+        </nav>
+        <div class="header-cta compte-navigation" data-navigation-compte>
+          <a class="bouton bouton-secondaire" href="connexion.html">Se connecter</a>
+          <a class="bouton" href="inscription.html">Créer mon compte</a>
+        </div>
+      </header>
+
+      <main class="fiche-atelier" id="contenu">
+        <div class="fiche-entete">
+          <span class="surtitre">Création web</span>
+          <h1>Découvrir le HTML</h1>
+          <p class="fiche-introduction">Apprenez à structurer le contenu de vos pages web avec HTML5. Un atelier pratique idéal pour commencer votre parcours dans le développement web.</p>
+        </div>
+
+        <div class="fiche-layout">
+          <div class="fiche-contenu">
+            <section>
+              <h2>Objectifs de l'atelier</h2>
+              <ul class="fiche-objectifs">
+                <li>Comprendre le rôle du HTML dans une page web</li>
+                <li>Maîtriser les balises de base (titres, paragraphes, liens, images)</li>
+                <li>Structurer une page de manière sémantique</li>
+                <li>Créer des formulaires interactifs</li>
+              </ul>
+            </section>
+            
+            <section>
+              <h2>Programme détaillé</h2>
+              <ul class="programme-liste">
+                <li>
+                  <span class="programme-duree">30 min</span>
+                  <div>
+                    <h3>Introduction au Web et au HTML</h3>
+                    <p>Fonctionnement du web, syntaxe des balises et structure globale d'un document.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="programme-duree">45 min</span>
+                  <div>
+                    <h3>Sémantique et textes</h3>
+                    <p>Hiérarchie des titres, paragraphes, citations et formatage de texte.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="programme-duree">45 min</span>
+                  <div>
+                    <h3>Médias et liens</h3>
+                    <p>Intégrer des images, des vidéos et créer des liens internes et externes.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="fiche-reservation carte">
+            <h2>S'inscrire</h2>
+            <dl class="informations-atelier">
+              <div><dt>Niveau</dt><dd>Débutant</dd></div>
+              <div><dt>Durée</dt><dd>2 heures</dd></div>
+              <div><dt>Horaires</dt><dd>Chaque samedi, de 10 h à 12 h (heure de Paris)</dd></div>
+              <div><dt>Modalité</dt><dd>À distance, en direct</dd></div>
+            </dl>
+            <p class="atelier-prix" style="margin-top: 1.5rem;"><span>Prix de l’atelier</span><strong>25 €</strong></p>
+            <button class="bouton ouvrir-modale" type="button" style="width: 100%;" data-reserver-atelier="html">Réserver ma place</button>
+            <p class="note-demo">Ceci est une démonstration. Aucun paiement réel.</p>
+            
+            <hr style="border: 0; border-top: 1px solid var(--couleur-bordure); margin: 1.5rem 0;">
+            
+            <div class="fiche-formateur">
+                <img src="assets/images/formateur-1-320.webp" alt="Portrait de Fernanda Maria">
+                <div>
+                    <h3 style="font-size: 1rem;">Fernanda Maria</h3>
+                    <p style="font-size: 0.875rem; color: #53576a; margin: 0;">Spécialiste HTML & CSS</p>
+                </div>
+            </div>
+          </aside>
+        </div>
+      </main>
+
+      <footer>
+        <p>© 2026 SkillHub. Tous droits réservés.</p>
+      </footer>
+    </div>
+    
+    
+    <dialog id="modale-atelier" class="dialog-reservation carte-atelier" aria-labelledby="titre-modale">
+      <button class="fermer-modale" type="button" aria-label="Fermer la fenêtre de réservation" autofocus>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="m6 6 12 12M18 6 6 18" />
+        </svg>
+      </button>
+      <div class="atelier-entete">
+        <span class="atelier-code" aria-hidden="true">&lt;/&gt;</span>
+        <span class="atelier-categorie">Création web</span>
+      </div>
+      <h2 id="titre-modale">Réserver votre place</h2>
+      <h3>Découvrir le HTML</h3>
+      <p class="dialog-description">Apprenez à structurer le contenu de vos pages web avec HTML5. Un atelier pratique idéal pour commencer votre parcours dans le développement web.</p>
+      <dl class="informations-atelier">
+              <div><dt>Niveau</dt><dd>Débutant</dd></div>
+              <div><dt>Durée</dt><dd>2 heures</dd></div>
+              <div><dt>Horaires</dt><dd>Chaque samedi, de 10 h à 12 h (heure de Paris)</dd></div>
+              <div><dt>Modalité</dt><dd>À distance, en direct</dd></div>
+            </dl>
+      <div class="atelier-pied">
+        <p class="atelier-prix"><span>Prix de l’atelier</span><strong>25 €</strong></p>
+        <button class="bouton action" type="button" data-atelier="html">S’inscrire <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="note-demo">Inscription de démonstration. Aucun paiement n’est effectué.</p>
+      <p class="message-statut" id="message-modale" role="status" aria-live="polite" aria-atomic="true"></p>
+    </dialog>
+  </body>
+</html>

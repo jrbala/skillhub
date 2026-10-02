@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Créer mon compte — démonstration pédagogique SkillHub."><title>Créer mon compte — SkillHub</title>
+<link rel="stylesheet" href="css/base.css"><script src="js/stockage.js" defer></script><script src="js/main.js" defer></script><script src="js/compte.js" defer></script></head>
+<body data-page="creation"><a class="skip-link" href="#contenu">Aller au contenu principal</a><div class="page">
+        <header class="site-header">
+        <p class="brand"> SkillHub</p>
+            <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navigation-principale"
+            >
+                <span aria-hidden="true">☰</span>
+                <span class="texte-visuellement-cache">Menu principal</span>
+            </button>
+        <nav id="navigation-principale" aria-label="Navigation principale">
+            <a href="index.html#valeurs">Valeurs</a>
+            <a href="index.html#ateliers">Ateliers</a>
+            <a href="index.html#formateurs">Formateurs</a>
+        </nav>
+
+        <div class="header-cta compte-navigation" data-navigation-compte>
+          <a class="bouton bouton-secondaire" href="connexion.html">Se connecter</a>
+          <a class="bouton" href="inscription.html">Créer mon compte</a>
+        </div>
+        </header>
+
+<main id="contenu" class="page-authentification">
+  <section class="authentification" aria-labelledby="titre-compte">
+    <div class="auth-introduction">
+      <p class="surtitre">LA COMMUNAUTÉ SKILLHUB</p>
+      <h1 id="titre-compte">Créez votre compte</h1>
+      <p>Rejoignez SkillHub et faites place à de nouvelles compétences.</p>
+      <ul class="avantages-compte">
+        <li>Des ateliers pour apprendre par la pratique</li>
+        <li>Des formateurs pour vous accompagner</li>
+        <li>Vos inscriptions réunies au même endroit</li>
+      </ul>
+      <a class="retour-accueil" href="index.html">← Retour à l’accueil</a>
+    </div>
+    <div class="auth-carte">
+      <h2>Créer mon compte</h2>
+      <p class="auth-description">Quelques informations pour commencer.</p>
+      <p id="atelier-en-attente" class="resume-atelier" hidden></p>
+      <form id="formulaire-compte" data-mode="creation" novalidate>
+        <p class="indication-champs">Tous les champs sont obligatoires.</p>
+        <div class="groupe-champ">
+          <label for="nom">Nom</label>
+          <input class="champ" id="nom" name="nom" type="text" autocomplete="name" required aria-invalid="false" aria-describedby="erreur-nom">
+          <p class="message-erreur" id="erreur-nom"></p>
+        </div>
+        <div class="groupe-champ">
+          <label for="email">Adresse e-mail</label>
+          <input class="champ" id="email" name="email" type="email" autocomplete="email" required aria-invalid="false" aria-describedby="erreur-email">
+          <p class="message-erreur" id="erreur-email"></p>
+        </div>
+        <div class="groupe-champ">
+          <label for="mot-de-passe">Mot de passe</label>
+          <input class="champ" id="mot-de-passe" name="mot-de-passe" type="password" autocomplete="new-password" required aria-invalid="false" aria-describedby="erreur-mot-de-passe aide-mot-de-passe">
+          <p id="aide-mot-de-passe" class="aide-champ">Au moins 8 caractères.</p>
+          <p class="message-erreur" id="erreur-mot-de-passe"></p>
+        </div>
+        <div class="groupe-champ">
+          <label for="confirmation">Confirmation du mot de passe</label>
+          <input class="champ" id="confirmation" name="confirmation" type="password" autocomplete="new-password" required aria-invalid="false" aria-describedby="erreur-confirmation">
+          <p class="message-erreur" id="erreur-confirmation"></p>
+        </div>
+        <button class="bouton" type="submit">Créer mon compte</button>
+        <p id="message-compte" class="message-statut" role="status" aria-live="polite" aria-atomic="true"></p>
+      </form>
+      <p class="auth-alternative">Déjà un compte ? <a href="connexion.html" data-poursuivre-compte>Se connecter</a></p>
+      <p class="note-demo">Espace de démonstration : utilisez des informations fictives.</p>
+      <noscript>Activez JavaScript pour utiliser cette démonstration de compte.</noscript>
+    </div>
+  </section>
+</main>
+<footer><p>© 2026 SkillHub. Tous droits réservés.</p></footer></div></body></html>

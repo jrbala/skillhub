@@ -229,6 +229,10 @@ nav a:focus-visible {
   display: flex;
 }
 .header-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
     margin-left: 0;
     align-self: center;
     grid-column: 1 / -1;
@@ -250,16 +254,61 @@ nav a:focus-visible {
 .valeur svg {
     color: var(--couleur-accent);
 }
+.carrossel-conteneur {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.carrossel-bouton {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--couleur-surface);
+    border: 1px solid var(--couleur-bordure);
+    box-shadow: 0 4px 18px rgb(37 40 58 / 10%);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--couleur-texte);
+    padding: 0;
+}
+.carrossel-bouton:hover, .carrossel-bouton:focus-visible {
+    color: var(--couleur-accent-sombre);
+    border-color: var(--couleur-accent);
+}
+.carrossel-precedent { left: -1rem; }
+.carrossel-suivant { right: -1rem; }
+.carrossel-bouton[hidden] { display: none !important; }
+
 .liste-ateliers{
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+}
+@media (min-width: 45em) {
+    .liste-ateliers {
+        grid-auto-columns: calc(50% - 0.5rem);
+    }
+}
+.liste-ateliers::-webkit-scrollbar {
+    display: none; /* WebKit */
 }
 .liste-ateliers > .carte {
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    scroll-snap-align: start;
 }
 .liste-ateliers > .carte > * {
   margin: 0;
@@ -448,4 +497,281 @@ footer p {
     align-self: start;
     margin-top: 4rem;
   }
+}
+/* Compte local et informations des ateliers : mêmes composants et jetons. */
+[hidden] { display: none !important; }
+.compte-navigation { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem; }
+.compte-navigation > a:not(.bouton), .espace-compte a:not(.bouton) { color: var(--couleur-accent-sombre); }
+nav { flex-wrap: wrap; }
+.informations-atelier div { margin-bottom: 0.5rem; }
+.informations-atelier dt { font-weight: 700; }
+.informations-atelier dd { margin: 0; }
+.espace-compte { max-width: 52rem; }
+.espace-compte h1 { margin-top: 0; }
+.espace-compte form { margin-inline: 0; }
+.message-statut { color: var(--couleur-accent-sombre); font-weight: 700; }
+.message-statut:empty { margin: 0; }
+.message-statut.est-erreur { color: var(--couleur-erreur); }
+.message-statut:focus-visible { outline: 3px solid var(--couleur-accent-sombre); outline-offset: 3px; }
+.champ { border-color: var(--couleur-bordure); }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: 0.75; }
+#confirmation-atelier { margin-block: 1.5rem; }
+#confirmation-atelier button { margin-block: 0.25rem; }
+@media (min-width: 45em) {
+  .site-header { flex-wrap: wrap; }
+  .compte-navigation { flex: 0 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carte, .valeur { transition: none; }
+}
+
+/* Navigation de compte : deux actions clairement identifiables. */
+.compte-navigation .bouton { padding: 0.65rem 1rem; font-size: 0.9375rem; font-weight: 700; text-align: center; }
+.bouton-secondaire { color: var(--couleur-accent-sombre); background: var(--couleur-surface); border-color: var(--couleur-accent); }
+.bouton-secondaire:hover, .bouton-secondaire:focus-visible { color: var(--couleur-accent-sombre); background: #eeecff; }
+
+/* Fiches d’atelier : informations regroupées et action au pied de la carte. */
+.liste-ateliers > .carte-atelier { padding: 1.75rem; gap: 1.25rem; border-radius: 16px; box-shadow: 0 4px 18px rgb(37 40 58 / 4%); }
+.carte-atelier:hover { background: var(--couleur-surface); border-color: var(--couleur-accent); }
+.atelier-entete { display: flex; align-items: center; gap: 0.75rem; }
+.atelier-code { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: #eeecff; color: var(--couleur-accent-sombre); font-weight: 700; }
+.atelier-categorie { font-size: 0.875rem; font-weight: 700; color: var(--couleur-accent-sombre); }
+.carte-atelier .titre { font-size: 1.375rem; line-height: 1.35; }
+.carte-atelier .informations-atelier { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-block: 1.25rem; border-block: 1px solid var(--couleur-bordure); }
+.carte-atelier .informations-atelier div { margin: 0; min-width: 0; }
+.carte-atelier .informations-atelier dt { font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: #53576a; margin-bottom: 0.25rem; }
+.carte-atelier .informations-atelier dd { font-size: 0.875rem; }
+.liste-ateliers > .carte-atelier > .atelier-pied { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; }
+.atelier-prix { margin: 0; }
+.atelier-prix span { display: block; font-size: 0.75rem; color: #53576a; }
+.atelier-prix strong { font-size: 1.75rem; }
+.atelier-pied .bouton { align-self: center; white-space: nowrap; padding: 0.7rem 1rem; }
+
+/* Pages de connexion et de création : composition dédiée, composants partagés. */
+body[data-page="connexion"] .page, body[data-page="creation"] .page { min-height: 100vh; grid-template-rows: auto 1fr auto; }
+.authentification { display: grid; gap: 2rem; max-width: 1100px; padding-block: 2.5rem; }
+.auth-introduction { align-self: center; }
+.surtitre { color: var(--couleur-accent-sombre); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; }
+.auth-introduction h1 { line-height: 1.15; margin-block: 1rem; max-width: 12ch; }
+.auth-introduction > p:not(.surtitre) { color: #53576a; max-width: 38ch; }
+.avantages-compte { list-style: none; padding: 0; margin-block: 2rem; display: grid; gap: 0.75rem; }
+.avantages-compte li { display: flex; gap: 0.65rem; font-size: 0.9375rem; }
+.avantages-compte li::before { content: '✓'; color: var(--couleur-accent-sombre); font-weight: 700; }
+.retour-accueil, .auth-alternative a { color: var(--couleur-accent-sombre); text-underline-offset: 3px; }
+.auth-carte { min-width: 0; padding: 1.5rem; background: var(--couleur-surface); border: 1px solid var(--couleur-bordure); border-radius: 20px; box-shadow: 0 12px 40px rgb(37 40 58 / 6%); }
+.auth-carte h2 { margin: 0; font-size: 1.5rem; }
+.auth-description { margin: 0.4rem 0 1.5rem; color: #53576a; }
+.auth-carte form { background: none; border: 0; padding: 0; }
+.indication-champs, .aide-champ { font-size: 0.8125rem; color: #53576a; }
+.indication-champs { margin-bottom: 1.25rem; }
+.auth-carte label { font-size: 0.875rem; }
+.auth-carte .champ { padding: 0.8rem 1rem; border-radius: 9px; border-color: #85899a; background: #fcfcfe; }
+.auth-carte .champ[aria-invalid="true"] { border-color: var(--couleur-erreur); }
+.auth-carte .champ:focus-visible { outline: 3px solid var(--couleur-accent); outline-offset: 2px; background: var(--couleur-surface); }
+.auth-carte .message-erreur:empty { min-height: 0; margin: 0; }
+.auth-carte .groupe-champ { margin-bottom: 1.25rem; }
+.aide-champ { margin-block: 0.4rem 0; }
+.auth-carte form .bouton { width: 100%; font-weight: 700; margin-top: 1.5rem; }
+.auth-alternative { text-align: center; padding-top: 1.25rem; margin-top: 1.5rem; border-top: 1px solid var(--couleur-bordure); font-size: 0.875rem; }
+.note-demo { margin: 1.25rem 0 0; font-size: 0.75rem; text-align: center; color: #53576a; }
+.resume-atelier { padding: 1rem; background: #eeecff; border-radius: 10px; color: var(--couleur-accent-sombre); font-size: 0.875rem; }
+@media (min-width: 45em) {
+  .authentification { grid-template-columns: 0.9fr 1.1fr; align-items: start; gap: 2.5rem; padding-block: 4rem; }
+  .auth-carte { padding: 2rem; }
+}
+@media (min-width: 64em) {
+  .authentification { gap: 5rem; }
+  .auth-carte { padding: 2.5rem; }
+}
+@media (max-width: 44.999em) {
+  .auth-introduction h1 { max-width: none; }
+  .avantages-compte { display: none; }
+  .compte-navigation { width: 100%; }
+  .compte-navigation .bouton { flex: 1; padding: 0.5rem; font-size: 0.8125rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+/* Réservation : même hiérarchie visuelle que les fiches d’atelier. */
+.dialog-reservation {
+  position: fixed;
+  max-width: 35rem;
+  max-height: calc(100dvh - 2rem);
+  padding: 2rem;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 20px;
+  box-shadow: 0 24px 80px rgb(37 40 58 / 25%);
+  overflow-y: auto;
+}
+.dialog-reservation::backdrop { background: rgb(37 40 58 / 60%); backdrop-filter: blur(4px); }
+.dialog-reservation .fermer-modale {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 50%;
+  color: var(--couleur-texte);
+  background: var(--couleur-fond);
+}
+.dialog-reservation .fermer-modale:hover { color: var(--couleur-accent-sombre); background: #eeecff; border-color: var(--couleur-accent); }
+.dialog-reservation .atelier-entete { padding-right: 3rem; }
+.dialog-reservation .atelier-code { flex-shrink: 0; }
+.dialog-reservation h2 { margin: 1.5rem 0 0.5rem; font-size: clamp(1.5rem, 4vw, 1.875rem); line-height: 1.25; }
+.dialog-reservation h3 { margin: 0; font-size: 1.125rem; color: var(--couleur-accent-sombre); }
+.dialog-description { margin-block: 0.75rem 1.5rem; color: #53576a; }
+.dialog-reservation .atelier-pied { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.dialog-reservation .message-statut:not(:empty) { padding: 1rem; border-radius: 10px; background: #eeecff; }
+@media (max-width: 44.999em) {
+  .dialog-reservation { padding: 1.5rem; }
+  .dialog-reservation .atelier-entete { gap: 0.5rem; }
+  .dialog-reservation .atelier-categorie { font-size: 0.75rem; }
+}
+
+/* Formateurs : portraits et spécialités dans la continuité des ateliers. */
+.liste-formateurs .carte-formateur {
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--couleur-surface);
+  box-shadow: 0 4px 18px rgb(37 40 58 / 4%);
+}
+.liste-formateurs .carte-formateur:hover { background: var(--couleur-surface); }
+.liste-formateurs .carte-formateur img {
+  aspect-ratio: 4 / 3;
+  object-position: center 35%;
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+.formateur-contenu { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.5rem; }
+.formateur-contenu > * { margin: 0; }
+.formateur-specialite {
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  background: #eeecff;
+  color: var(--couleur-accent-sombre);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.formateur-contenu .titre { font-size: 1.25rem; line-height: 1.35; }
+.formateur-description { color: #53576a; font-size: 0.9375rem; }
+
+/* Valeurs : six repères visuels, sans comportement de carte cliquable. */
+#valeurs ul { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin-top: 1.75rem; }
+.valeur {
+  padding: 1.75rem;
+  border-radius: 16px;
+  background: var(--couleur-surface);
+  box-shadow: 0 4px 18px rgb(37 40 58 / 4%);
+}
+.valeur:hover { background: var(--couleur-surface); border-color: var(--couleur-accent); }
+.valeur svg {
+  display: block;
+  box-sizing: content-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: #eeecff;
+  color: var(--couleur-accent-sombre);
+}
+.valeur h3 { margin: 1.25rem 0 0.65rem; font-size: 1.125rem; line-height: 1.4; }
+.valeur p { margin: 0; color: #53576a; font-size: 0.9375rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .valeur { transition: border-color 200ms ease; }
+}
+@media (min-width: 45em) {
+  #valeurs ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 64em) {
+  #valeurs ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.confirmation-inscription:not(:empty) {
+  padding: 1rem;
+  border: 1px solid var(--couleur-accent);
+  border-radius: 10px;
+  background: #eeecff;
+  font-size: 0.875rem;
+}
+.confirmation-inscription.est-erreur { border-color: var(--couleur-erreur); background: #fff4f2; }
+.bouton.est-inscrit:disabled { opacity: 1; cursor: default; color: var(--couleur-accent-sombre); background: #eeecff; border-color: var(--couleur-bordure); }
+
+/* Espace personnel et gestion des inscriptions. */
+.espace-profil { max-width: 1100px; }
+.espace-profil h1 { margin-block: 0.5rem; }
+.profil-introduction { color: #53576a; margin-bottom: 2rem; }
+.profil-identite { display: flex; align-items: center; gap: 1.25rem; border-radius: 16px; margin-bottom: 1.5rem; }
+.profil-identite:hover, .profil-vide:hover { background: var(--couleur-surface); }
+.profil-avatar { display: grid; place-items: center; flex-shrink: 0; width: 3.5rem; height: 3.5rem; border-radius: 16px; background: #eeecff; color: var(--couleur-accent-sombre); font-size: 1.5rem; font-weight: 700; }
+.profil-identite > div { min-width: 0; }
+.profil-identite h2 { font-size: 1.25rem; margin: 0; }
+.profil-identite p { margin: 0; }
+#profil-email { color: #53576a; font-size: 0.9375rem; overflow-wrap: anywhere; }
+.profil-identite .profil-compteur { margin-left: auto; padding-left: 1.5rem; border-left: 1px solid var(--couleur-bordure); flex-shrink: 0; }
+.profil-compteur strong { display: block; font-size: 1.75rem; color: var(--couleur-accent-sombre); }
+.profil-compteur span { font-size: 0.8125rem; color: #53576a; }
+.profil-section-entete, .profil-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.profil-section-entete { justify-content: space-between; margin-block: 2rem 1.25rem; }
+.profil-section-entete h2 { margin: 0; }
+.profil-bas { justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--couleur-bordure); }
+.profil-bas a { color: var(--couleur-accent-sombre); }
+.profil-vide { text-align: center; padding: 2.5rem 1.5rem; border-radius: 16px; }
+.profil-vide .atelier-code, .profil-vide p { margin-inline: auto; }
+.profil-vide p { color: #53576a; }
+.bouton-danger-secondaire { color: var(--couleur-erreur); border-color: var(--couleur-erreur); background: var(--couleur-surface); }
+.bouton-danger-secondaire:hover, .bouton-danger-secondaire:focus-visible { color: var(--couleur-erreur); background: #fff4f2; }
+.bouton-danger { background: var(--couleur-erreur); border-color: var(--couleur-erreur); }
+.bouton-danger:hover, .bouton-danger:focus-visible { background: #861b12; border-color: #861b12; }
+@media (max-width: 44.999em) {
+  .profil-identite { flex-wrap: wrap; }
+  .profil-identite .profil-compteur { width: 100%; border-left: 0; border-top: 1px solid var(--couleur-bordure); padding: 1rem 0 0; }
+  #mes-ateliers .atelier-pied { flex-wrap: wrap; }
+}
+
+/* Catalogue synthétique et pages de programme détaillées. */
+.catalogue-note { font-size: 0.8125rem; color: #53576a; }
+.atelier-apercu { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
+.atelier-apercu li { padding: 0.3rem 0.6rem; background: var(--couleur-fond); border-radius: 6px; font-size: 0.75rem; color: #53576a; }
+.atelier-apercu li.statut-ouvert { background: #e0f2fe; color: #0369a1; font-weight: 700; }
+.atelier-apercu li.statut-ferme { background: #fee2e2; color: #b91c1c; font-weight: 700; }
+.lien-programme, .fiche-atelier a:not(.bouton) { color: var(--couleur-accent-sombre); text-underline-offset: 3px; }
+.lien-programme { font-size: 0.875rem; font-weight: 700; }
+.catalogue-ateliers .atelier-pied { padding-top: 1rem; border-top: 1px solid var(--couleur-bordure); flex-wrap: wrap; }
+.fiche-atelier { max-width: 1100px; margin-inline: auto; padding: 2rem 1.5rem 4rem; }
+.fiche-entete { padding-block: 2rem; }
+.fiche-entete h1 { max-width: 24ch; line-height: 1.15; margin-block: 1rem; }
+.fiche-introduction { font-size: 1.125rem; color: #53576a; }
+.fiche-layout { display: grid; gap: 2rem; }
+.fiche-contenu { min-width: 0; }
+.fiche-contenu section { padding: 0 0 2rem; margin-bottom: 2rem; border-bottom: 1px solid var(--couleur-bordure); }
+.fiche-contenu h2 { margin-top: 0; font-size: 1.5rem; }
+.fiche-contenu h3 { font-size: 1.0625rem; }
+.fiche-objectifs { padding-left: 1.25rem; }
+.fiche-objectifs li { padding-left: 0.4rem; margin-block: 0.75rem; }
+.fiche-objectifs li::marker { color: var(--couleur-accent-sombre); }
+.programme-liste { list-style: none; padding: 0; display: grid; gap: 1rem; }
+.programme-liste li { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; background: var(--couleur-surface); border: 1px solid var(--couleur-bordure); border-radius: 12px; }
+.programme-duree { flex-shrink: 0; padding: 0.25rem 0.5rem; background: #eeecff; color: var(--couleur-accent-sombre); border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+.programme-liste h3 { margin: 0; }
+.programme-liste p { margin-bottom: 0; color: #53576a; font-size: 0.9375rem; }
+.fiche-reservation { align-self: start; border-radius: 16px; box-shadow: 0 4px 18px rgb(37 40 58 / 4%); }
+.fiche-reservation:hover { background: var(--couleur-surface); }
+.fiche-reservation h2 { margin-top: 0; font-size: 1.25rem; }
+.fiche-reservation > .bouton { width: 100%; margin-block: 1rem; font-weight: 700; }
+.fiche-formateur { display: flex; gap: 1rem; align-items: flex-start; }
+.fiche-formateur img { width: 5rem; height: 5rem; flex-shrink: 0; object-fit: cover; border-radius: 12px; }
+.fiche-formateur h3 { margin-top: 0; }
+.autres-ateliers { padding: 2rem 0 0; }
+@media (min-width: 64em) {
+  .catalogue-ateliers { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .catalogue-ateliers > .carte-atelier { padding: 1.5rem; }
+  .fiche-layout { grid-template-columns: minmax(0, 1fr) 20rem; gap: 3rem; }
+  .fiche-reservation { position: sticky; top: 1.5rem; }
+}
+@media (max-width: 44.999em) {
+  .programme-liste li { flex-direction: column; gap: 0.5rem; }
 }

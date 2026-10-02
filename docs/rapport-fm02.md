@@ -76,7 +76,7 @@ Un bouton permet d’afficher ou de masquer la navigation sur les petits écrans
 
 Le formulaire utilise une validation personnalisée. Lorsqu’un champ est invalide, `aria-invalid` est mis à jour, un message compréhensible est affiché et le focus est dirigé vers le premier champ concerné.
 
-Après une validation correcte, une fenêtre native `<dialog>` confirme l’inscription. Elle peut être fermée au clavier avec la touche Échap. À sa fermeture, le focus revient sur l’élément qui l’avait ouverte.
+Le formulaire historique affiche un message de validation. Le bouton « Réserver ma place » ouvre une fenêtre native `<dialog>` présentant le prochain atelier. Elle peut être fermée au clavier avec la touche Échap. À sa fermeture, le focus revient sur l’élément qui l’avait ouverte.
 
 ## Preuves et livrables
 
@@ -110,3 +110,15 @@ Après la fermeture de la fenêtre `<dialog>`, le focus devait revenir sur l’�
 ## Conclusion
 
 Les travaux réalisés dans le cadre du module FM02 m’ont permis d’améliorer l’ergonomie et l’accessibilité de SkillHub. Les personas, le parcours utilisateur, l’audit heuristique et les tests d’accessibilité ont guidé les décisions d’interface. Les interactions JavaScript ont également été conçues pour fonctionner au clavier et communiquer clairement leur état aux technologies d’assistance.
+
+## Évolution — Parcours de compte et inscription protégée
+
+Le parcours apprenant présente les informations nécessaires à la décision sur les deux cartes d’atelier. Chaque bouton identifie précisément l’atelier. Sans session, le choix est mémorisé pendant la création du compte puis la connexion ; le profil demande une confirmation explicite avec le nom et le prix. Un utilisateur connecté peut s’inscrire directement. Les doublons sont refusés et une région `aria-live` annonce le résultat.
+
+Les formulaires utilisent des labels associés, `aria-describedby`, `aria-invalid`, des erreurs personnalisées en français et le focus sur le premier champ invalide. Le profil affiche un état vide lorsqu’aucune inscription n’existe. Le nom fourni par l’utilisateur est rendu comme texte et non interprété comme HTML.
+
+Le menu mobile conserve `aria-expanded`, se ferme après sélection d’un lien et avec Échap. Le dialog natif et le retour du focus à son bouton d’ouverture sont conservés. Le formulaire historique reste disponible comme contact de démonstration, avec un texte indiquant clairement qu’il ne réserve pas d’atelier.
+
+La navigation propose « Se connecter » et « Créer mon compte », ou « Mon espace » et « Se déconnecter » selon la session. Un accès direct au profil sans session valide redirige vers la connexion. Cette protection est pédagogique : localStorage et les contrôles JavaScript sont modifiables par l’utilisateur.
+
+Les scores WAVE et Lighthouse cités plus haut concernent les audits historiques. Ils n’ont pas été recalculés pour cette évolution. Les tests actuels et leurs limites sont détaillés dans [la vérification des comptes](verification-comptes.md).

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Découvrez notre atelier complet sur l'UX/UI.">
+    <title>Fondamentaux UX/UI — SkillHub</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/stockage.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/compte.js" defer></script>
+  </head>
+  <body data-page="fiche">
+    <div class="page">
+      <header class="site-header">
+        <a href="index.html" class="brand" style="text-decoration: none;">SkillHub</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-principale">
+          <span aria-hidden="true">☰</span>
+          <span class="texte-visuellement-cache">Menu principal</span>
+        </button>
+        <nav id="navigation-principale" aria-label="Navigation principale">
+          <a href="index.html#valeurs">Valeurs</a>
+          <a href="index.html#ateliers">Ateliers</a>
+          <a href="index.html#formateurs">Formateurs</a>
+        </nav>
+        <div class="header-cta compte-navigation" data-navigation-compte>
+          <a class="bouton bouton-secondaire" href="connexion.html">Se connecter</a>
+          <a class="bouton" href="inscription.html">Créer mon compte</a>
+        </div>
+      </header>
+
+      <main class="fiche-atelier" id="contenu">
+        <div class="fiche-entete">
+          <span class="surtitre">Conception</span>
+          <h1>Fondamentaux UX/UI</h1>
+          <p class="fiche-introduction">Créez des interfaces intuitives et agréables à utiliser en comprenant les besoins de vos utilisateurs et les bonnes pratiques de design.</p>
+        </div>
+
+        <div class="fiche-layout">
+          <div class="fiche-contenu">
+            <section>
+              <h2>Objectifs de l'atelier</h2>
+              <ul class="fiche-objectifs">
+                <li>Comprendre la différence et la complémentarité entre l'UX et l'UI</li>
+                <li>Mener une recherche utilisateur basique</li>
+                <li>Créer des wireframes et des prototypes</li>
+                <li>Appliquer les principes de hiérarchie visuelle</li>
+              </ul>
+            </section>
+            
+            <section>
+              <h2>Programme détaillé</h2>
+              <ul class="programme-liste">
+                <li>
+                  <span class="programme-duree">1 h 30</span>
+                  <div>
+                    <h3>Introduction à l'UX Design</h3>
+                    <p>Empathie utilisateur, personas, parcours utilisateur et recherche.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="programme-duree">1 h 30</span>
+                  <div>
+                    <h3>Principes d'UI Design</h3>
+                    <p>Théorie des couleurs, typographie, espacements et cohérence visuelle.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="programme-duree">1 heure</span>
+                  <div>
+                    <h3>Prototypage</h3>
+                    <p>Création de wireframes et de maquettes interactives simples.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="fiche-reservation carte">
+            <h2>S'inscrire</h2>
+            <dl class="informations-atelier">
+              <div><dt>Niveau</dt><dd>Tous niveaux</dd></div>
+              <div><dt>Durée</dt><dd>4 heures</dd></div>
+              <div><dt>Horaires</dt><dd>Chaque jeudi, de 14 h à 18 h</dd></div>
+              <div><dt>Modalité</dt><dd>À distance, en direct</dd></div>
+            </dl>
+            <p class="atelier-prix" style="margin-top: 1.5rem;"><span>Prix de l’atelier</span><strong>55 €</strong></p>
+            <button class="bouton ouvrir-modale" type="button" style="width: 100%;" data-reserver-atelier="ux">Réserver ma place</button>
+            <p class="note-demo">Ceci est une démonstration. Aucun paiement réel.</p>
+            
+            <hr style="border: 0; border-top: 1px solid var(--couleur-bordure); margin: 1.5rem 0;">
+            
+            <div class="fiche-formateur">
+                <img src="assets/images/formateur-3-320.webp" alt="Portrait de Dominique Laurent">
+                <div>
+                    <h3 style="font-size: 1rem;">Dominique Laurent</h3>
+                    <p style="font-size: 0.875rem; color: #53576a; margin: 0;">Product Designer</p>
+                </div>
+            </div>
+          </aside>
+        </div>
+      </main>
+
+      <footer>
+        <p>© 2026 SkillHub. Tous droits réservés.</p>
+      </footer>
+    </div>
+  
+    <dialog id="modale-atelier" class="dialog-reservation carte-atelier" aria-labelledby="titre-modale">
+      <button class="fermer-modale" type="button" aria-label="Fermer la fenêtre de réservation" autofocus>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="m6 6 12 12M18 6 6 18" />
+        </svg>
+      </button>
+      <div class="atelier-entete">
+        <span class="atelier-code" aria-hidden="true">UX</span>
+        <span class="atelier-categorie">Conception</span>
+      </div>
+      <h2 id="titre-modale">Réserver votre place</h2>
+      <h3>Fondamentaux UX/UI</h3>
+      <p class="dialog-description">Créez des interfaces intuitives et agréables à utiliser en comprenant les besoins de vos utilisateurs et les bonnes pratiques de design.</p>
+      <dl class="informations-atelier">
+              <div><dt>Niveau</dt><dd>Tous niveaux</dd></div>
+              <div><dt>Durée</dt><dd>4 heures</dd></div>
+              <div><dt>Horaires</dt><dd>Chaque jeudi, de 14 h à 18 h</dd></div>
+              <div><dt>Modalité</dt><dd>À distance, en direct</dd></div>
+            </dl>
+      <div class="atelier-pied">
+        <p class="atelier-prix"><span>Prix de l’atelier</span><strong>55 €</strong></p>
+        <button class="bouton action" type="button" data-atelier="ux">S’inscrire <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="note-demo">Inscription de démonstration. Aucun paiement n’est effectué.</p>
+      <p class="message-statut" id="message-modale" role="status" aria-live="polite" aria-atomic="true"></p>
+    </dialog>
+  </body>
+</html>

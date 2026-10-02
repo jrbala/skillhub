@@ -7,7 +7,9 @@
     <title>SkillHub — Ateliers et partage de compétences</title>
     <link rel="preload" href="assets/fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin >
     <link rel="stylesheet" href="css/base.css">
-    <script src="js/main.js" defer></script>  </head>
+    <script src="js/stockage.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/compte.js" defer></script>  </head>
 
   <body>
     <a class="skip-link" href="#contenu">Aller au contenu principal</a>
@@ -29,7 +31,10 @@
             <a href="#formateurs">Formateurs</a>
         </nav>
 
-        <a class="header-cta bouton" href="#inscription">Créer mon compte</a>
+        <div class="header-cta compte-navigation" data-navigation-compte>
+          <a class="bouton bouton-secondaire" href="connexion.html">Se connecter</a>
+          <a class="bouton" href="inscription.html">Créer mon compte</a>
+        </div>
         </header>
 
         <main id="contenu">
@@ -56,7 +61,7 @@
                 <aside>
                     <h2>Prochain atelier</h2>
                     <p>Le prochain atelier est consacré aux bases du HTML.</p>
-                    <button class="bouton ouvrir-modale" type="button">
+                    <button class="bouton ouvrir-modale" type="button" data-reserver-atelier="html">
                         Réserver ma place
                     </button>
                 </aside>
@@ -64,7 +69,7 @@
 
             <section id="valeurs">
             <h2>Nos valeurs</h2>
-            <p>Nous encourageons le partage et l'apprentissage par la pratique.</p>
+            <p>Apprendre ensemble, progresser à son rythme.</p>
 
             <ul>
                 <li class="valeur">
@@ -73,7 +78,7 @@
                         <path  stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                     </svg>
                     <h3>Partage des connaissances</h3>
-                    <p>Les participants partagent leurs connaissances et leurs expériences.</p>
+                    <p>Partagez vos connaissances et apprenez des expériences de chacun.</p>
                 </li>
 
                 <li class="valeur">
@@ -81,7 +86,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                     </svg>
                     <h3>Entraide</h3>
-                    <p>Les participants s'entraident pour résoudre les difficultés.</p>
+                    <p>Avancez ensemble et trouvez des solutions à plusieurs.</p>
                 </li>
 
                 <li class="valeur">
@@ -89,7 +94,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
                     </svg>
                     <h3>Apprentissage par la pratique</h3>
-                    <p>Chaque atelier propose des exercices et des projets concrets.</p>
+                    <p>Apprenez en réalisant des exercices et des projets concrets.</p>
                 </li>
 
                 <li class="valeur">
@@ -98,7 +103,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
                     <h3>Accessibilité</h3>
-                    <p>Les contenus et les ateliers sont conçus pour être accessibles à tous.</p>
+                    <p>Des contenus et des ateliers pensés pour être accessibles à tous.</p>
                 </li>
 
                 <li class="valeur">
@@ -106,7 +111,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
                     </svg>
                     <h3>Créativité</h3>
-                    <p>Les ateliers encouragent les participants à développer leurs idées.</p>
+                    <p>Explorez vos idées et donnez vie à vos projets.</p>
                 </li>
 
                 <li class="valeur">
@@ -115,27 +120,119 @@
                     </svg>
 
                     <h3>Progression continue</h3>
-                    <p>Chaque participant progresse à son rythme et développe ses compétences.</p>
+                    <p>Développez vos compétences, une étape à la fois.</p>
                 </li>
             </ul>
             </section>
 
             <section id="ateliers">
             <h2>Nos ateliers</h2>
-                <div class="liste-ateliers">
-                    <article class="carte">
-                        <h3 class="titre">Découvrir le HTML</h3>
-                        <p>Apprenez à organiser le contenu d'une page web.</p>
-                        <a class="action bouton" href="#inscription">S'inscrire à l'atelier HTML</a>
-                    </article>
+            <p>Ateliers de démonstration : aucune réservation réelle ni aucun paiement.</p>
+            <p id="message-ateliers" class="message-statut" role="status" aria-live="polite" aria-atomic="true"></p>
+                <div class="carrossel-conteneur">
+                    <button class="carrossel-bouton carrossel-precedent" type="button" aria-label="Voir les ateliers précédents" hidden>
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <div class="liste-ateliers" id="liste-ateliers-demo">
+                        <article class="carte carte-atelier">
+                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">&lt;/&gt;</span><span class="atelier-categorie">Création web</span></div>
+                            <h3 class="titre" id="titre-html">Découvrir le HTML</h3>
+                            <p>Apprenez à organiser le contenu d'une page web.</p>
+                            <ul class="atelier-apercu">
+                                <li class="statut-ouvert">Ouvert</li>
+                                <li>Débutant</li>
+                                <li>2 heures</li>
+                                <li>À distance</li>
+                            </ul>
+                            <div class="atelier-pied">
+                                <p class="atelier-prix"><span>Prix</span><strong>25 €</strong></p>
+                                <a class="lien-programme" href="cours-html.html">Voir le programme <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
 
-                    <article class="carte">
-                        <h3 class="titre">Premiers pas en JavaScript</h3>
-                        <p>Découvrez comment ajouter des interactions à une page.</p>
-                        <a class="action bouton" href="#inscription">
-  S'inscrire à l'atelier JavaScript
-</a>
-                    </article>
+                        <article class="carte carte-atelier">
+                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">JS</span><span class="atelier-categorie">Programmation</span></div>
+                            <h3 class="titre" id="titre-javascript">Premiers pas en JavaScript</h3>
+                            <p>Découvrez comment ajouter des interactions à une page.</p>
+                            <ul class="atelier-apercu">
+                                <li class="statut-ouvert">Ouvert</li>
+                                <li>Débutant</li>
+                                <li>3 heures</li>
+                                <li>À distance</li>
+                            </ul>
+                            <div class="atelier-pied">
+                                <p class="atelier-prix"><span>Prix</span><strong>40 €</strong></p>
+                                <a class="lien-programme" href="cours-javascript.html">Voir le programme <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+
+                        <article class="carte carte-atelier">
+                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">CSS</span><span class="atelier-categorie">Design web</span></div>
+                            <h3 class="titre" id="titre-css">Maitriser le CSS</h3>
+                            <p>Apprenez à styliser vos pages web avec du CSS moderne.</p>
+                            <ul class="atelier-apercu">
+                                <li class="statut-ferme">Fermé</li>
+                                <li>Débutant</li>
+                                <li>2 heures</li>
+                                <li>À distance</li>
+                            </ul>
+                            <div class="atelier-pied">
+                                <p class="atelier-prix"><span>Prix</span><strong>30 €</strong></p>
+                                <a class="lien-programme" href="cours-css.html">Voir le programme <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+
+                        <article class="carte carte-atelier">
+                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">UX</span><span class="atelier-categorie">Conception</span></div>
+                            <h3 class="titre" id="titre-ux">Fondamentaux UX/UI</h3>
+                            <p>Créez des interfaces intuitives et agréables à utiliser.</p>
+                            <ul class="atelier-apercu">
+                                <li class="statut-ouvert">Ouvert</li>
+                                <li>Tous niveaux</li>
+                                <li>4 heures</li>
+                                <li>À distance</li>
+                            </ul>
+                            <div class="atelier-pied">
+                                <p class="atelier-prix"><span>Prix</span><strong>55 €</strong></p>
+                                <a class="lien-programme" href="cours-ux.html">Voir le programme <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+
+                        <article class="carte carte-atelier">
+                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">RE</span><span class="atelier-categorie">Frameworks</span></div>
+                            <h3 class="titre" id="titre-react">Introduction à React</h3>
+                            <p>Construisez des applications web dynamiques avec React.</p>
+                            <ul class="atelier-apercu">
+                                <li class="statut-ferme">Fermé</li>
+                                <li>Intermédiaire</li>
+                                <li>3 heures</li>
+                                <li>À distance</li>
+                            </ul>
+                            <div class="atelier-pied">
+                                <p class="atelier-prix"><span>Prix</span><strong>45 €</strong></p>
+                                <a class="lien-programme" href="cours-react.html">Voir le programme <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+
+                        <article class="carte carte-atelier">
+                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">A11Y</span><span class="atelier-categorie">Accessibilité</span></div>
+                            <h3 class="titre" id="titre-a11y">Web Accessible</h3>
+                            <p>Rendez vos sites web utilisables par tous.</p>
+                            <ul class="atelier-apercu">
+                                <li class="statut-ouvert">Ouvert</li>
+                                <li>Débutant</li>
+                                <li>2 heures</li>
+                                <li>À distance</li>
+                            </ul>
+                            <div class="atelier-pied">
+                                <p class="atelier-prix"><span>Prix</span><strong>35 €</strong></p>
+                                <a class="lien-programme" href="cours-a11y.html">Voir le programme <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+                    </div>
+                    <button class="carrossel-bouton carrossel-suivant" type="button" aria-label="Voir les ateliers suivants">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </button>
                 </div>
             </section>
 
@@ -143,7 +240,7 @@
             <h2>Nos formateurs</h2>
             <p>Nos formateurs accompagnent les participants pendant les ateliers.</p>
             <div class="liste-formateurs">
-                <article class="carte">
+                <article class="carte carte-formateur">
                     <img
                         src="assets/images/formateur-1-640.webp"
                         srcset="
@@ -156,11 +253,14 @@
                         height="427"
                         loading="lazy"
                         alt="Portrait de Fernanda Maria">
-                    <h3 class="titre">Fernanda Maria</h3>
-                    <p>Formatrice en HTML et CSS.</p>
+                    <div class="formateur-contenu">
+                        <p class="formateur-specialite">HTML &amp; CSS</p>
+                        <h3 class="titre">Fernanda Maria</h3>
+                        <p class="formateur-description">Donnez forme à vos premières pages web.</p>
+                    </div>
                 </article>
 
-                <article class="carte">
+                <article class="carte carte-formateur">
                     <img
                         src="assets/images/formateur-2-640.webp"
                         srcset="
@@ -173,11 +273,14 @@
                         height="360"
                         loading="lazy"
                         alt="Portrait de Joseph Ricardo">
-                    <h3 class="titre">Joseph Ricardo</h3>
-                    <p>Formation en JavaScript.</p>
+                    <div class="formateur-contenu">
+                        <p class="formateur-specialite">JavaScript</p>
+                        <h3 class="titre">Joseph Ricardo</h3>
+                        <p class="formateur-description">Passez des pages statiques aux interactions.</p>
+                    </div>
                     </article>
 
-                    <article class="carte">
+                    <article class="carte carte-formateur">
                     <img
                         src="assets/images/formateur-3-640.webp"
                         srcset="
@@ -190,17 +293,20 @@
                         height="360"
                         loading="lazy"
                         alt="Portrait de Dominique Laurent">
-                    <h3 class="titre">Dominique Laurent</h3>
-                    <p>Formation en accessibilité web.</p>
+                    <div class="formateur-contenu">
+                        <p class="formateur-specialite">Accessibilité web</p>
+                        <h3 class="titre">Dominique Laurent</h3>
+                        <p class="formateur-description">Pensez des interfaces accessibles à tous.</p>
+                    </div>
                     </article>
                 </div>
             </section>
 
             <section id="inscription">
-            <h2>Inscription</h2>
-            <p>Laissez vos coordonnées pour vous inscrire.</p>
+            <h2>Découvrir SkillHub</h2>
+            <p>Essayez le formulaire de contact de démonstration. Pour réserver un atelier, utilisez son bouton « S’inscrire ».</p>
 
-            <form id="formulaire-inscription" aria-label="Formulaire d'inscription à SkillHub" novalidate>
+            <form id="formulaire-inscription" aria-label="Formulaire de contact de démonstration" novalidate>
                 <div>
                 <label for="nom">Nom</label>
                 <input class="champ" id="nom" name="nom" type="text" required aria-describedby="erreur-nom">
@@ -213,7 +319,13 @@
                 <p id="erreur-email" class="message-erreur" aria-live="polite"></p>
                 </div>
 
-                <button class="bouton" type="submit">S'inscrire</button>
+                <div>
+                <label for="message">Message</label>
+                <textarea class="champ" id="message" name="message" required aria-describedby="erreur-message" rows="4"></textarea>
+                <p id="erreur-message" class="message-erreur" aria-live="polite"></p>
+                </div>
+
+                <button class="bouton" type="submit">Envoyer ma demande</button>
                 <p id="message-formulaire" aria-live="polite"></p>
             </form>
             </section>
@@ -223,16 +335,31 @@
         <p>© 2026 SkillHub. Tous droits réservés.</p>
         </footer>
     </div>
-    <dialog id="modale-atelier" aria-labelledby="titre-modale">
-  <h2 id="titre-modale">Réserver votre place</h2>
-
-  <p>
-    Confirmez votre intérêt pour le prochain atelier consacré aux bases du HTML.
-  </p>
-
-  <button class="bouton fermer-modale" type="button">
-    Fermer
-  </button>
-</dialog>
+    <dialog id="modale-atelier" class="dialog-reservation carte-atelier" aria-labelledby="titre-modale">
+      <button class="fermer-modale" type="button" aria-label="Fermer la fenêtre de réservation" autofocus>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="m6 6 12 12M18 6 6 18" />
+        </svg>
+      </button>
+      <div class="atelier-entete">
+        <span class="atelier-code" aria-hidden="true">&lt;/&gt;</span>
+        <span class="atelier-categorie">Votre prochain atelier</span>
+      </div>
+      <h2 id="titre-modale">Réserver votre place</h2>
+      <h3>Découvrir le HTML</h3>
+      <p class="dialog-description">Apprenez à organiser le contenu d’une page web et créez vos premières pages, pas à pas.</p>
+      <dl class="informations-atelier">
+        <div><dt>Niveau</dt><dd>Débutant</dd></div>
+        <div><dt>Durée</dt><dd>2 heures</dd></div>
+        <div><dt>Horaires</dt><dd>Chaque samedi, de 10 h à 12 h (heure de Paris)</dd></div>
+        <div><dt>Modalité</dt><dd>À distance, en direct</dd></div>
+      </dl>
+      <div class="atelier-pied">
+        <p class="atelier-prix"><span>Prix de l’atelier</span><strong>25 €</strong></p>
+        <button class="bouton" type="button" data-atelier="html">S’inscrire <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="note-demo">Inscription de démonstration. Aucun paiement n’est effectué.</p>
+      <p class="message-statut" id="message-modale" role="status" aria-live="polite" aria-atomic="true"></p>
+    </dialog>
   </body>
 </html>
