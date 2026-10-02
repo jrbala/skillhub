@@ -117,6 +117,7 @@ a:focus-visible {
   background-color: var(--couleur-surface);
   padding: 1.5rem;
   border: 1px solid var(--couleur-bordure);
+  border-radius: 8px;
 }
 .carte,
 .valeur {
@@ -163,6 +164,7 @@ form > div {
     border: 1px solid var(--couleur-accent);
     display: inline-block;
     text-decoration: none;
+    border-radius: 8px;
 }
 .header-cta {
   padding: 0.5rem 1rem;
@@ -243,6 +245,7 @@ nav a:focus-visible {
     background-color: var(--couleur-surface);
     padding: 1.5rem;
     border: 1px solid var(--couleur-bordure);
+    border-radius: 8px;
 }
 .valeur svg {
     color: var(--couleur-accent);
