@@ -7,21 +7,23 @@
     <title>Web Accessible — SkillHub</title>
     <link rel="stylesheet" href="css/base.css">
     <script src="js/stockage.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script src="js/generated/interface.js" defer></script><script src="js/main.js" defer></script>
     <script src="js/compte.js" defer></script>
   </head>
   <body data-page="fiche">
     <div class="page">
       <header class="site-header">
         <a href="index.html" class="brand" style="text-decoration: none;">SkillHub</a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-principale">
+        <nav id="navigation-principale" class="navigation-principale" aria-label="Navigation principale">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="liens-navigation">
           <span aria-hidden="true">☰</span>
           <span class="texte-visuellement-cache">Menu principal</span>
         </button>
-        <nav id="navigation-principale" aria-label="Navigation principale">
+        <div id="liens-navigation" class="liens-navigation">
           <a href="index.html#valeurs">Valeurs</a>
           <a href="index.html#ateliers">Ateliers</a>
           <a href="index.html#formateurs">Formateurs</a>
+        </div>
         </nav>
         <div class="header-cta compte-navigation" data-navigation-compte>
           <a class="bouton bouton-secondaire" href="connexion.html">Se connecter</a>

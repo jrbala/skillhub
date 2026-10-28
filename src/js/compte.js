@@ -127,6 +127,7 @@
       return !texte;
     }
     function valider(champ) {
+      const valideNatif = champ.checkValidity();
       let texte = '';
       if (!champ.value || (champ.type !== 'password' && !champ.value.trim())) {
         texte = { nom: 'Veuillez saisir votre nom.', email: 'Veuillez saisir votre adresse e-mail.', 'mot-de-passe': 'Veuillez saisir votre mot de passe.', confirmation: 'Veuillez confirmer votre mot de passe.' }[champ.id];
@@ -137,12 +138,17 @@
       } else if (champ.id === 'confirmation' && champ.value !== document.querySelector('#mot-de-passe').value) {
         texte = 'Les deux mots de passe doivent être identiques.';
       }
+      if (!texte && !valideNatif) texte = 'Veuillez vérifier ce champ.';
       return erreurChamp(champ, texte);
     }
     champs.forEach(champ => {
       champ.addEventListener('blur', () => valider(champ));
       champ.addEventListener('input', () => {
-        if (champ.getAttribute('aria-invalid') === 'true') valider(champ);
+        valider(champ);
+        if (creation && champ.id === 'mot-de-passe') {
+          const confirmation = document.querySelector('#confirmation');
+          if (confirmation.value) valider(confirmation);
+        }
       });
     });
     let enCours = false;
@@ -157,9 +163,11 @@
       }
       enCours = true;
       const bouton = formulaire.querySelector('[type="submit"]');
+      const texteInitial = bouton.textContent;
       bouton.disabled = true;
+      bouton.textContent = creation ? 'Inscription en cours…' : 'Connexion en cours…';
       formulaire.setAttribute('aria-busy', 'true');
-      annoncer(message, 'Vérification en cours…');
+      annoncer(message, bouton.textContent);
       try {
         const email = document.querySelector('#email').value;
         const motDePasse = document.querySelector('#mot-de-passe').value;
@@ -179,10 +187,14 @@
         } else if (!creation) {
           erreurChamp(document.querySelector('#email'), erreur.message);
           document.querySelector('#email').focus();
+        } else {
+          message.tabIndex = -1;
+          message.focus();
         }
       } finally {
         enCours = false;
         bouton.disabled = false;
+        bouton.textContent = texteInitial;
         formulaire.removeAttribute('aria-busy');
       }
     });

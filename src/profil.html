@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Mon espace — démonstration pédagogique SkillHub."><title>Mon espace — SkillHub</title>
-<link rel="stylesheet" href="css/base.css"><script src="js/stockage.js" defer></script><script src="js/main.js" defer></script><script src="js/compte.js" defer></script></head>
+<link rel="stylesheet" href="css/base.css"><script src="js/stockage.js" defer></script><script src="js/generated/interface.js" defer></script><script src="js/main.js" defer></script><script src="js/compte.js" defer></script></head>
 <body data-page="profil"><a class="skip-link" href="#contenu">Aller au contenu principal</a><div class="page">
         <header class="site-header">
         <p class="brand"> SkillHub</p>
-            <button
+            <nav id="navigation-principale" class="navigation-principale" aria-label="Navigation principale">
+        <button
             class="menu-toggle"
             type="button"
             aria-expanded="false"
-            aria-controls="navigation-principale"
+            aria-controls="liens-navigation"
             >
                 <span aria-hidden="true">☰</span>
                 <span class="texte-visuellement-cache">Menu principal</span>
             </button>
-        <nav id="navigation-principale" aria-label="Navigation principale">
+        <div id="liens-navigation" class="liens-navigation">
             <a href="index.html#valeurs">Valeurs</a>
             <a href="index.html#ateliers">Ateliers</a>
             <a href="index.html#formateurs">Formateurs</a>
+        </div>
         </nav>
 
         <div class="header-cta compte-navigation" data-navigation-compte>

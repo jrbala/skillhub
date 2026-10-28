@@ -1,144 +1,54 @@
-const boutonMenu = document.querySelector(".menu-toggle");
-
-boutonMenu.addEventListener("click", () => {
-  const menuOuvert =
-    boutonMenu.getAttribute("aria-expanded") === "true";
-    boutonMenu.setAttribute("aria-expanded", String(!menuOuvert));
-});
-
-const boutonOuvrirModale = document.querySelector(".ouvrir-modale");
-const boutonFermerModale = document.querySelector(".fermer-modale");
-const modaleAtelier = document.querySelector("#modale-atelier");
-
-boutonOuvrirModale?.addEventListener("click", () => {
-  modaleAtelier.showModal();
-});
-
-boutonFermerModale?.addEventListener("click", () => {
-  modaleAtelier.close();
-});
-
-modaleAtelier?.addEventListener("close", () => {
-  boutonOuvrirModale.focus();
-});
-
-if (document.querySelector("#formulaire-inscription")) {
-// Validation du formulaire de démonstration
-const champNom = document.querySelector("#nom");
-const erreurNom = document.querySelector("#erreur-nom");
-
-function validerNom() {
-  if (!champNom.value.trim()) {
-    erreurNom.textContent = "Veuillez saisir votre nom.";
-    champNom.setAttribute("aria-invalid", "true");
-    return false;
+const formulaireDemo = document.querySelector('#formulaire-inscription');
+if (formulaireDemo) {
+  const champs = [...formulaireDemo.querySelectorAll('input, textarea')];
+  const message = document.querySelector('#message-formulaire');
+  const bouton = formulaireDemo.querySelector('[type="submit"]');
+  let enCours = false;
+  function validerChamp(champ) {
+    const valideNatif = champ.checkValidity();
+    let erreur = '';
+    if (!champ.value.trim()) {
+      erreur = { nom: 'Veuillez saisir votre nom.', email: 'Veuillez saisir votre adresse e-mail.', message: 'Veuillez saisir votre message.' }[champ.id];
+    } else if (!valideNatif) {
+      erreur = champ.type === 'email' ? 'Veuillez saisir une adresse e-mail valide.' : 'Veuillez vérifier ce champ.';
+    }
+    document.getElementById(`erreur-${champ.id}`).textContent = erreur;
+    champ.setAttribute('aria-invalid', String(Boolean(erreur)));
+    return !erreur;
   }
-
-  erreurNom.textContent = "";
-  champNom.setAttribute("aria-invalid", "false");
-  return true;
+  champs.forEach(champ => {
+    champ.addEventListener('blur', () => validerChamp(champ));
+    champ.addEventListener('input', () => validerChamp(champ));
+  });
+  formulaireDemo.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (enCours) return;
+    const valides = champs.map(validerChamp);
+    if (valides.includes(false)) {
+      message.textContent = 'Veuillez corriger les champs indiqués.';
+      champs.find(champ => champ.getAttribute('aria-invalid') === 'true').focus();
+      return;
+    }
+    enCours = true;
+    const texteInitial = bouton.textContent;
+    bouton.disabled = true;
+    bouton.textContent = 'Inscription en cours…';
+    formulaireDemo.setAttribute('aria-busy', 'true');
+    message.textContent = 'Inscription en cours…';
+    try {
+      // Laisser le navigateur afficher l’état ; aucun appel réseau ni inscription réelle.
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      message.textContent = 'Votre demande de démonstration a été validée. Aucune donnée n’a été envoyée ni inscription à un atelier effectuée.';
+    } finally {
+      enCours = false;
+      bouton.disabled = false;
+      bouton.textContent = texteInitial;
+      formulaireDemo.removeAttribute('aria-busy');
+      message.setAttribute('tabindex', '-1');
+      message.focus();
+    }
+  });
 }
-
-champNom.addEventListener("blur", validerNom);
-
-champNom.addEventListener("input", () => {
-  if (champNom.getAttribute("aria-invalid") === "true") {
-    validerNom();
-  }
-});
-
-const champEmail = document.querySelector("#email");
-const erreurEmail = document.querySelector("#erreur-email");
-
-const champMessage = document.querySelector("#message");
-const erreurMessage = document.querySelector("#erreur-message");
-
-// Validation de l’adresse e-mail
-function validerEmail() {
-  if (champEmail.validity.valueMissing) {
-    erreurEmail.textContent = "Veuillez saisir votre adresse e-mail.";
-    champEmail.setAttribute("aria-invalid", "true");
-    return false;
-  }
-
-  if (champEmail.validity.typeMismatch) {
-    erreurEmail.textContent = "Veuillez saisir une adresse e-mail valide.";
-    champEmail.setAttribute("aria-invalid", "true");
-    return false;
-  }
-
-  erreurEmail.textContent = "";
-  champEmail.setAttribute("aria-invalid", "false");
-  return true;
-}
-
-champEmail.addEventListener("blur", validerEmail);
-
-champEmail.addEventListener("input", () => {
-  if (champEmail.getAttribute("aria-invalid") === "true") {
-    validerEmail();
-  }
-});
-
-function validerMessage() {
-  if (!champMessage.value.trim()) {
-    erreurMessage.textContent = "Veuillez saisir votre message.";
-    champMessage.setAttribute("aria-invalid", "true");
-    return false;
-  }
-
-  erreurMessage.textContent = "";
-  champMessage.setAttribute("aria-invalid", "false");
-  return true;
-}
-
-champMessage.addEventListener("blur", validerMessage);
-
-champMessage.addEventListener("input", () => {
-  if (champMessage.getAttribute("aria-invalid") === "true") {
-    validerMessage();
-  }
-});
-
-// Envoi de démonstration
-const formulaire = document.querySelector("#formulaire-inscription");
-const messageFormulaire = document.querySelector("#message-formulaire");
-
-formulaire.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const nomValide = validerNom();
-  const emailValide = validerEmail();
-  const messageValide = validerMessage();
-
-  if (!nomValide || !emailValide || !messageValide) {
-    messageFormulaire.textContent = "";
-
-    const premierChampInvalide =
-      formulaire.querySelector('[aria-invalid="true"]');
-
-    premierChampInvalide.focus();
-    return;
-  }
-
-  messageFormulaire.textContent =
-    "Votre demande de démonstration a été validée. Aucune donnée n’a été envoyée ni inscription à un atelier effectuée.";
-});
-}
-
-const navigation = document.querySelector('#navigation-principale');
-function fermerMenu() { boutonMenu.setAttribute('aria-expanded', 'false'); }
-navigation.addEventListener('click', event => {
-  if (event.target.closest('a') && getComputedStyle(boutonMenu).display !== 'none') {
-    fermerMenu();
-    boutonMenu.focus();
-  }
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && boutonMenu.getAttribute('aria-expanded') === 'true') {
-    fermerMenu(); boutonMenu.focus();
-  }
-});
 
 // Logique du carrossel
 const carrossel = document.querySelector('#liste-ateliers-demo');
@@ -154,17 +64,18 @@ if (carrossel && boutonPrecedent && boutonSuivant) {
 
   carrossel.addEventListener('scroll', updateBoutons);
   window.addEventListener('resize', updateBoutons);
+  carrossel.addEventListener('catalogue:actualise', updateBoutons);
   
   // Initialiser l'état
   updateBoutons();
 
   boutonPrecedent.addEventListener('click', () => {
-    const cardWidth = carrossel.querySelector('.carte').clientWidth + 16; // 1rem gap
+    const cardWidth = (carrossel.querySelector('.carte')?.clientWidth ?? 0) + 16; // 1rem gap
     carrossel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
   });
 
   boutonSuivant.addEventListener('click', () => {
-    const cardWidth = carrossel.querySelector('.carte').clientWidth + 16;
+    const cardWidth = (carrossel.querySelector('.carte')?.clientWidth ?? 0) + 16;
     carrossel.scrollBy({ left: cardWidth, behavior: 'smooth' });
   });
 }

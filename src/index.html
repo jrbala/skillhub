@@ -8,27 +8,30 @@
     <link rel="preload" href="assets/fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin >
     <link rel="stylesheet" href="css/base.css">
     <script src="js/stockage.js" defer></script>
-    <script src="js/main.js" defer></script>
-    <script src="js/compte.js" defer></script>  </head>
+    <script src="js/generated/interface.js" defer></script><script src="js/main.js" defer></script>
+    <script src="js/compte.js" defer></script>
+    <script type="module" src="js/generated/catalogue.js"></script>  </head>
 
   <body>
     <a class="skip-link" href="#contenu">Aller au contenu principal</a>
     <div class="page">
         <header class="site-header">
         <p class="brand"> SkillHub</p>
-            <button
+            <nav id="navigation-principale" class="navigation-principale" aria-label="Navigation principale">
+        <button
             class="menu-toggle"
             type="button"
             aria-expanded="false"
-            aria-controls="navigation-principale"
+            aria-controls="liens-navigation"
             >
                 <span aria-hidden="true">☰</span>
                 <span class="texte-visuellement-cache">Menu principal</span>
             </button>
-        <nav id="navigation-principale" aria-label="Navigation principale">
+        <div id="liens-navigation" class="liens-navigation">
             <a href="#valeurs">Valeurs</a>
             <a href="#ateliers">Ateliers</a>
             <a href="#formateurs">Formateurs</a>
+        </div>
         </nav>
 
         <div class="header-cta compte-navigation" data-navigation-compte>
@@ -129,106 +132,22 @@
             <h2>Nos ateliers</h2>
             <p>Ateliers de démonstration : aucune réservation réelle ni aucun paiement.</p>
             <p id="message-ateliers" class="message-statut" role="status" aria-live="polite" aria-atomic="true"></p>
+            <form id="filtres-ateliers" class="filtres-ateliers" role="search" aria-label="Filtrer les ateliers">
+              <div class="recherche-autocomplete"><label for="recherche-ateliers">Rechercher un atelier ou un formateur</label><input class="champ" type="search" id="recherche-ateliers" name="recherche" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions-ateliers"><ul id="suggestions-ateliers" class="suggestions-ateliers" role="listbox" aria-label="Suggestions d’ateliers" hidden></ul></div>
+              <div><label for="niveau-ateliers">Niveau</label><select class="champ" id="niveau-ateliers" name="niveau"><option value="">Tous les niveaux</option><option>Débutant</option><option>Intermédiaire</option><option>Tous niveaux</option></select></div>
+              <div><label for="tri-ateliers">Trier par prix</label><select class="champ" id="tri-ateliers" name="tri"><option value="defaut">Ordre du catalogue</option><option value="croissant">Prix croissant</option><option value="decroissant">Prix décroissant</option></select></div>
+              <button class="bouton bouton-secondaire" type="reset">Réinitialiser les filtres</button>
+            </form>
+            <p id="compteur-ateliers" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div id="chargement-ateliers" hidden><p>Chargement des ateliers…</p><div class="catalogue-reserve" aria-hidden="true"></div></div>
+            <div id="erreur-ateliers" hidden><p id="texte-erreur-ateliers" role="alert"></p><button class="bouton" id="reessayer-ateliers" type="button">Réessayer</button></div>
+            <p id="vide-ateliers" hidden>Aucun atelier trouvé. Essayez un autre mot ou réinitialisez les filtres.</p>
+            <noscript>Activez JavaScript pour charger et filtrer le catalogue.</noscript>
                 <div class="carrossel-conteneur">
                     <button class="carrossel-bouton carrossel-precedent" type="button" aria-label="Voir les ateliers précédents" hidden>
                         <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
                     </button>
                     <div class="liste-ateliers" id="liste-ateliers-demo">
-                        <article class="carte carte-atelier">
-                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">&lt;/&gt;</span><span class="atelier-categorie">Création web</span></div>
-                            <h3 class="titre" id="titre-html">Découvrir le HTML</h3>
-                            <p>Apprenez à organiser le contenu d'une page web.</p>
-                            <ul class="atelier-apercu">
-                                <li class="statut-ouvert">Ouvert</li>
-                                <li>Débutant</li>
-                                <li>2 heures</li>
-                                <li>À distance</li>
-                            </ul>
-                            <div class="atelier-pied">
-                                <p class="atelier-prix"><span>Prix</span><strong>25 €</strong></p>
-                                <a class="lien-programme" href="cours-html.html">Voir le programme <span aria-hidden="true">→</span></a>
-                            </div>
-                        </article>
-
-                        <article class="carte carte-atelier">
-                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">JS</span><span class="atelier-categorie">Programmation</span></div>
-                            <h3 class="titre" id="titre-javascript">Premiers pas en JavaScript</h3>
-                            <p>Découvrez comment ajouter des interactions à une page.</p>
-                            <ul class="atelier-apercu">
-                                <li class="statut-ouvert">Ouvert</li>
-                                <li>Débutant</li>
-                                <li>3 heures</li>
-                                <li>À distance</li>
-                            </ul>
-                            <div class="atelier-pied">
-                                <p class="atelier-prix"><span>Prix</span><strong>40 €</strong></p>
-                                <a class="lien-programme" href="cours-javascript.html">Voir le programme <span aria-hidden="true">→</span></a>
-                            </div>
-                        </article>
-
-                        <article class="carte carte-atelier">
-                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">CSS</span><span class="atelier-categorie">Design web</span></div>
-                            <h3 class="titre" id="titre-css">Maitriser le CSS</h3>
-                            <p>Apprenez à styliser vos pages web avec du CSS moderne.</p>
-                            <ul class="atelier-apercu">
-                                <li class="statut-ferme">Fermé</li>
-                                <li>Débutant</li>
-                                <li>2 heures</li>
-                                <li>À distance</li>
-                            </ul>
-                            <div class="atelier-pied">
-                                <p class="atelier-prix"><span>Prix</span><strong>30 €</strong></p>
-                                <a class="lien-programme" href="cours-css.html">Voir le programme <span aria-hidden="true">→</span></a>
-                            </div>
-                        </article>
-
-                        <article class="carte carte-atelier">
-                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">UX</span><span class="atelier-categorie">Conception</span></div>
-                            <h3 class="titre" id="titre-ux">Fondamentaux UX/UI</h3>
-                            <p>Créez des interfaces intuitives et agréables à utiliser.</p>
-                            <ul class="atelier-apercu">
-                                <li class="statut-ouvert">Ouvert</li>
-                                <li>Tous niveaux</li>
-                                <li>4 heures</li>
-                                <li>À distance</li>
-                            </ul>
-                            <div class="atelier-pied">
-                                <p class="atelier-prix"><span>Prix</span><strong>55 €</strong></p>
-                                <a class="lien-programme" href="cours-ux.html">Voir le programme <span aria-hidden="true">→</span></a>
-                            </div>
-                        </article>
-
-                        <article class="carte carte-atelier">
-                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">RE</span><span class="atelier-categorie">Frameworks</span></div>
-                            <h3 class="titre" id="titre-react">Introduction à React</h3>
-                            <p>Construisez des applications web dynamiques avec React.</p>
-                            <ul class="atelier-apercu">
-                                <li class="statut-ferme">Fermé</li>
-                                <li>Intermédiaire</li>
-                                <li>3 heures</li>
-                                <li>À distance</li>
-                            </ul>
-                            <div class="atelier-pied">
-                                <p class="atelier-prix"><span>Prix</span><strong>45 €</strong></p>
-                                <a class="lien-programme" href="cours-react.html">Voir le programme <span aria-hidden="true">→</span></a>
-                            </div>
-                        </article>
-
-                        <article class="carte carte-atelier">
-                            <div class="atelier-entete"><span class="atelier-code" aria-hidden="true">A11Y</span><span class="atelier-categorie">Accessibilité</span></div>
-                            <h3 class="titre" id="titre-a11y">Web Accessible</h3>
-                            <p>Rendez vos sites web utilisables par tous.</p>
-                            <ul class="atelier-apercu">
-                                <li class="statut-ouvert">Ouvert</li>
-                                <li>Débutant</li>
-                                <li>2 heures</li>
-                                <li>À distance</li>
-                            </ul>
-                            <div class="atelier-pied">
-                                <p class="atelier-prix"><span>Prix</span><strong>35 €</strong></p>
-                                <a class="lien-programme" href="cours-a11y.html">Voir le programme <span aria-hidden="true">→</span></a>
-                            </div>
-                        </article>
                     </div>
                     <button class="carrossel-bouton carrossel-suivant" type="button" aria-label="Voir les ateliers suivants">
                         <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
@@ -335,6 +254,12 @@
         <p>© 2026 SkillHub. Tous droits réservés.</p>
         </footer>
     </div>
+    <dialog id="fiche-atelier" class="dialog-reservation carte-atelier" aria-labelledby="titre-fiche">
+      <button class="bouton bouton-secondaire" id="retour-catalogue" type="button" autofocus>Retour au catalogue</button>
+      <h2 id="titre-fiche"></h2><p id="description-fiche"></p>
+      <dl id="informations-fiche" class="informations-atelier"></dl>
+      <a id="programme-fiche" class="bouton">Voir le programme et les inscriptions</a>
+    </dialog>
     <dialog id="modale-atelier" class="dialog-reservation carte-atelier" aria-labelledby="titre-modale">
       <button class="fermer-modale" type="button" aria-label="Fermer la fenêtre de réservation" autofocus>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">

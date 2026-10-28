@@ -70,6 +70,7 @@ skillhub/
 
 - [Rapport FM01 — Développement d’interfaces front-end](docs/rapport-fm01.md)
 - [Rapport FM02 — Ergonomie, UX/UI et accessibilité](docs/rapport-fm02.md)
+- [TP2 FM03 — TypeScript : erreurs et vérifications](docs/tp2-fm03-typescript.md)
 
 ## Utiliser les comptes de démonstration
 
@@ -101,7 +102,17 @@ Utilisez exclusivement des données fictives et un mot de passe jetable. Aucun e
 
 ## Exécution locale et GitHub Pages
 
-Aucune installation, dépendance ou étape de compilation n’est nécessaire. Depuis la racine du dépôt :
+Les TP2 et TP3 compilent le menu, les modales et le catalogue de TypeScript vers JavaScript. Après une modification dans `src/ts/`, depuis la racine du dépôt :
+
+```sh
+npm ci
+npm run typecheck
+npm run build
+```
+
+`npm run watch` recompile pendant le développement. Les fichiers générés dans `src/js/generated/` sont conservés pour la publication statique ; ne les modifiez pas à la main. Le navigateur charge uniquement le JavaScript. Les comptes et le formulaire restent en JavaScript. Le catalogue est chargé depuis `src/ateliers.json`, filtré et affiché par TypeScript compilé.
+
+Pour consulter le site (les fichiers générés sont déjà fournis) :
 
 ```sh
 python3 -m http.server 8000 --directory src
@@ -114,3 +125,9 @@ Le workflow existant `.github/workflows/static.yml` publie directement `src`. Le
 ## Vérification de cette évolution
 
 Voir [le compte rendu des tests de la simulation](docs/verification-comptes.md). Les anciens rapports Lighthouse, WAVE, captures et preuves sont conservés et décrivent leurs versions historiques ; ils ne constituent pas une nouvelle certification de cette version.
+
+## TP3 — Catalogue chargé et filtrable
+
+12 ateliers, recherche, filtre par niveau, tri par prix, fiches accessibles au clavier et gestion du chargement, des résultats vides et des erreurs.
+
+Voir [le guide TP3 : exécution, tests et captures à remettre](docs/tp3-fm03-catalogue.md).

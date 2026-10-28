@@ -5,12 +5,12 @@ window.SkillHub = (() => {
     inscriptions: 'skillhub_inscriptions', attente: 'skillhub_atelier_en_attente'
   };
   const ateliers = [
-    { id: 'html', nom: 'Découvrir le HTML', prix: '25 €', niveau: 'Débutant', duree: '2 heures', horaires: 'Chaque samedi, de 10 h à 12 h (heure de Paris)', modalite: 'À distance, en direct' },
-    { id: 'javascript', nom: 'Premiers pas en JavaScript', prix: '40 €', niveau: 'Débutant — bases HTML conseillées', duree: '3 heures', horaires: 'Chaque mercredi, de 14 h à 17 h (heure de Paris)', modalite: 'À distance, en direct' },
-    { id: 'css', nom: 'Maitriser le CSS', prix: '30 €', niveau: 'Débutant — bases HTML conseillées', duree: '2 heures', horaires: 'Chaque lundi, de 18 h à 20 h (heure de Paris)', modalite: 'À distance, en direct' },
-    { id: 'ux', nom: 'Fondamentaux UX/UI', prix: '55 €', niveau: 'Tous niveaux', duree: '4 heures', horaires: 'Chaque jeudi, de 14 h à 18 h (heure de Paris)', modalite: 'À distance, en direct' },
-    { id: 'react', nom: 'Introduction à React', prix: '45 €', niveau: 'Intermédiaire — JavaScript requis', duree: '3 heures', horaires: 'Chaque mardi, de 10 h à 13 h (heure de Paris)', modalite: 'À distance, en direct' },
-    { id: 'a11y', nom: 'Web Accessible', prix: '35 €', niveau: 'Débutant — HTML/CSS conseillés', duree: '2 heures', horaires: 'Chaque vendredi, de 16 h à 18 h (heure de Paris)', modalite: 'À distance, en direct' }
+    { id: 'html', nom: 'Découvrir le HTML', prix: '25 €', niveau: 'Débutant', duree: '2 heures', horaires: 'Chaque samedi, de 10 h à 12 h (heure de Paris)', modalite: 'À distance, en direct', code: "</>", categorie: "Création web", description: "Apprenez à organiser le contenu d'une page web.", ouvert: true },
+    { id: 'javascript', nom: 'Premiers pas en JavaScript', prix: '40 €', niveau: 'Débutant — bases HTML conseillées', duree: '3 heures', horaires: 'Chaque mercredi, de 14 h à 17 h (heure de Paris)', modalite: 'À distance, en direct', code: "JS", categorie: "Programmation", description: "Découvrez comment ajouter des interactions à une page.", ouvert: true },
+    { id: 'css', nom: 'Maitriser le CSS', prix: '30 €', niveau: 'Débutant — bases HTML conseillées', duree: '2 heures', horaires: 'Chaque lundi, de 18 h à 20 h (heure de Paris)', modalite: 'À distance, en direct', code: "CSS", categorie: "Design web", description: "Apprenez à styliser vos pages web avec du CSS moderne.", ouvert: false },
+    { id: 'ux', nom: 'Fondamentaux UX/UI', prix: '55 €', niveau: 'Tous niveaux', duree: '4 heures', horaires: 'Chaque jeudi, de 14 h à 18 h (heure de Paris)', modalite: 'À distance, en direct', code: "UX", categorie: "Conception", description: "Créez des interfaces intuitives et agréables à utiliser.", ouvert: true },
+    { id: 'react', nom: 'Introduction à React', prix: '45 €', niveau: 'Intermédiaire — JavaScript requis', duree: '3 heures', horaires: 'Chaque mardi, de 10 h à 13 h (heure de Paris)', modalite: 'À distance, en direct', code: "RE", categorie: "Frameworks", description: "Construisez des applications web dynamiques avec React.", ouvert: false },
+    { id: 'a11y', nom: 'Web Accessible', prix: '35 €', niveau: 'Débutant — HTML/CSS conseillés', duree: '2 heures', horaires: 'Chaque vendredi, de 16 h à 18 h (heure de Paris)', modalite: 'À distance, en direct', code: "A11Y", categorie: "Accessibilité", description: "Rendez vos sites web utilisables par tous.", ouvert: true }
   ];
   function lireJSON(cle, defaut = null) {
     try {
