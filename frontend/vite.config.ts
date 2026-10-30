@@ -11,7 +11,7 @@ export default defineConfig({
       allow: [
         fileURLToPath(new URL('.', import.meta.url)),
         fileURLToPath(new URL('../src/ateliers.json', import.meta.url)),
-        fileURLToPath(new URL('../src/assets/fonts', import.meta.url)),
+        fileURLToPath(new URL('../src/assets', import.meta.url)),
       ],
     },
   },

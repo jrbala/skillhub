@@ -15,11 +15,6 @@
     font-display: swap;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
 :root {
     --couleur-fond: #f6f7fb;
     --couleur-texte: #25283a;

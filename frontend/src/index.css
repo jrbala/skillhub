@@ -11,6 +11,13 @@
     line-height: 1.6;
     overflow-wrap: break-word;
   }
+  /* Rythme typographique du HTML original, neutralisé par le reset Tailwind. */
+  h1 { font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 700; margin-block: .67em; }
+  h2 { font-size: 1.5rem; font-weight: 700; margin-block: .83em; }
+  h3 { font-size: 1.17rem; font-weight: 700; margin-block: 1em; }
+  p, ul, ol, dl { margin-block: 1em; }
+  button, input, select, textarea { font: inherit; }
+  a:hover { color: var(--couleur-accent); }
   :focus-visible {
     outline: 3px solid var(--couleur-accent-sombre);
     outline-offset: 3px;
