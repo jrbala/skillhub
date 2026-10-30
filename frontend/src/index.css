@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "./jetons.css";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    margin: 0;
+    background: var(--couleur-fond);
+    color: var(--couleur-texte);
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+  }
+  :focus-visible {
+    outline: 3px solid var(--couleur-accent-sombre);
+    outline-offset: 3px;
+  }
+}

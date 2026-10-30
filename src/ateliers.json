@@ -116,7 +116,7 @@
     "duree": "3 heures",
     "horaires": "Le samedi, de 14 h à 17 h (heure de Paris)",
     "modalite": "À distance, en direct",
-    "code": "TYPESCRIPT",
+    "code": "TS",
     "categorie": "Pratique du web"
   },
   {
@@ -131,7 +131,7 @@
     "duree": "3 heures",
     "horaires": "Le samedi, de 14 h à 17 h (heure de Paris)",
     "modalite": "À distance, en direct",
-    "code": "RESPONSIVE",
+    "code": "RPS",
     "categorie": "Pratique du web"
   },
   {
@@ -146,7 +146,7 @@
     "duree": "3 heures",
     "horaires": "Le samedi, de 14 h à 17 h (heure de Paris)",
     "modalite": "À distance, en direct",
-    "code": "FIGMA",
+    "code": "FIG",
     "categorie": "Pratique du web"
   },
   {
@@ -161,7 +161,7 @@
     "duree": "3 heures",
     "horaires": "Le samedi, de 14 h à 17 h (heure de Paris)",
     "modalite": "À distance, en direct",
-    "code": "CLAVIER",
+    "code": "CLAV",
     "categorie": "Pratique du web"
   },
   {
